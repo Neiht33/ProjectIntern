@@ -7,9 +7,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/*' element={<Header />} />
-        <Route path='/contest' element={<HeaderContest />} />
-        <Route path='/mbti' element={<MBTI />} />
+        <Route path='/mbti/*' element={<Header />} />
+        <Route path='/mbti/contest' element={<HeaderContest />} />
+        <Route path='/mbti/mbti' element={<MBTI />} />
       </Routes>
     </Router>
   );
