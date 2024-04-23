@@ -23,7 +23,7 @@ const cardData = [
 
 export default function HeaderContest() {
   return (
-    <div className='mbti-test' style={{ background: 'linear-gradient(180deg, #26cf97, #05783c)', marginTop: '50px' }}>
+    <div className='mbti-test' style={{ background: 'linear-gradient(180deg, #26cf97, #05783c)' }}>
       <div>
         <div style={{ textAlign: 'center', color: 'white', padding: '30px' }}>
           <h1 style={{ fontSize: '45px', fontWeight: '800' }}>Làm bài trắc nghiệm MBTI miễn phí</h1>
