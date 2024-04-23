@@ -1,0 +1,41 @@
+.flip-card {
+     perspective: 1000px;
+
+     /* Tạo hiệu ứng 3D */
+}
+
+.flip-card-inner {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     transition: transform 1s;
+     transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+     transform: rotateY(180deg) scale(.8);
+     /* Xoay thẻ khi hover */
+}
+
+.flip-card-front,
+.flip-card-back {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     backface-visibility: hidden;
+     /* Ẩn mặt sau của thẻ */
+}
+
+.flip-card-front {
+     /* Thêm CSS cho mặt trước của thẻ */
+}
+
+.flip-card-back {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 20px;
+     flex-direction: column;
+     text-align: center;
+     transform: rotateY(180deg);
+}

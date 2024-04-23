@@ -1,0 +1,21 @@
+.header-top .card-title {
+     align-self: stretch;
+     color: #00612b;
+     font-size: 20px;
+     font-style: normal;
+     font-weight: 600;
+     letter-spacing: -.18px;
+     line-height: 20px;
+     text-align: center;
+}
+
+.header-top .card-content {
+     align-self: stretch;
+     color: #007a37;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 400;
+     letter-spacing: .14px;
+     line-height: 20px;
+     text-align: center;
+}
