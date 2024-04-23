@@ -2,7 +2,7 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Carousel, Card, button } from "@material-tailwind/react";
-import "../../assert/css/bottom.css";
+import "../../assert/cssMBTI/bottom.css";
 export default function Bottom() {
   const cardData = [
     {

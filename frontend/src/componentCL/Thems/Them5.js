@@ -2,10 +2,10 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import "../../css/Tool.css"
-import "./Them6.css";
+import "../../assert/cssCL/Tool.css"
+import "./Them5.css";
 
-function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
+function Them5 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
     let { id } = useParams();
     const [updateUrlIMG, setUpdateUrlIMG] = useState('')
     const [fileCurrent, setFileCurrent] = useState()
@@ -43,7 +43,6 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
         cvoReceiver.addEventListener('mouseout', function() {
         tool.style.display = 'none'
         })
-
     }, [data]);
 
     const onChange = ({ fileList: newFileList }) => {
@@ -52,19 +51,17 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
           const avatarUp = document.querySelector('.ant-upload-list-item-thumbnail')
           setUpdateUrlIMG(avatarUp.href)
         }, 1000);
-    };
+      };
   
     const handleExitEditIMG = () => {
-      document.getElementById('image-upload-change-two').value = null;
-      document.getElementById('image-upload-change').value = null;
       const close = document.getElementById('imageEditorWraper')
       close.style.display = 'none'
     }
 
     return (
-        <div id="App6" onClick={() => {document.querySelector('.block-popup').style.display = 'none'}}>
-            <div id="cv-data">
-                <div style={{display: "flex", justifyContent: "center" }}>
+        <div id="App5" onClick={() => {document.querySelector('.block-popup').style.display = 'none'}}>
+            <div id="cv-data" >
+                <div style={{ display: "flex", justifyContent: "center" }}>
                     <div
                         id="cv-title"
                         className="non-printable"
@@ -86,8 +83,31 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
                         <div className="cvo-subpage">
                         <div id="cvo-body">
                             <div id="group-header" cvo-block-group="true">
-                            <div className="cvo-col-9">
-                                <div id="cvo-profile-fullname-wraper">
+                            <div
+                                className="cvo-block"
+                                id="cvo-profile"
+                                cvo-form-block="true"
+                                style={{ display: "block" }}
+                            >
+                                <div id="cvo-profile-avatar-wraper">
+                                <img
+                                    id="cvo-profile-avatar"
+                                    src={`${urlIMG}`}
+                                    value="2024_04_02______1d373e3a17f2dac5d86340785d69d380.png"
+                                    alt="avatar"
+                                    name="cvoData[profile][avatar]"
+                                    type="image"
+                                    cvo-form-field="true"
+                                    blockkey="profile"
+                                    fieldkey="avatar"
+                                    onClick={() => {
+                                        const close = document.getElementById('imageEditorWraper')
+                                        close.style.display = 'block'
+                                        setUpdateUrlIMG(urlIMG)
+                                      }}   
+                                />
+                                </div>
+                                <div id="cvo-header-left">
                                 <span
                                     id="cvo-profile-fullname"
                                     name="cvoData[profile][fullname]"
@@ -104,8 +124,7 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
                                 >
                                     {data.name}
                                 </span>
-                                </div>
-                                <div id="cvo-profile-title-wraper">
+                                <br />
                                 <span
                                     id="cvo-profile-title"
                                     className="color-content default_min_width"
@@ -123,37 +142,9 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
                                     {data.title}
                                 </span>
                                 </div>
-                            </div>
-                            <div className="cvo-col-3">
-                                <div id="cvo-profile-avatar-wraper">
-                                <img
-                                    id="cvo-profile-avatar"
-                                    src={`${urlIMG}`}
-                                    value="2024_04_02______1d373e3a17f2dac5d86340785d69d380.png"
-                                    alt="avatar"
-                                    name="cvoData[profile][avatar]"
-                                    type="image"
-                                    cvo-form-field="true"
-                                    blockkey="profile"
-                                    fieldkey="avatar"
-                                    onClick={() => {
-                                        const close = document.getElementById('imageEditorWraper')
-                                        close.style.display = 'block'
-                                        setUpdateUrlIMG(urlIMG)
-                                    }}  
-                                />
-                                </div>
-                            </div>
-                            </div>
-                            <div id="group-top">
-                            <div
-                                className="cvo-block"
-                                id="cvo-profile"
-                                cvo-form-block="true"
-                                style={{ display: "block" }}
-                            >
-                                <span id="cvo-profile-address-wraper">
-                                <span
+                                <div id="cvo-header-right">
+                                <div id="cvo-profile-address-wraper">
+                                    <span
                                     id="cvo-profile-address"
                                     name="cvoData[profile][address]"
                                     type="text"
@@ -166,32 +157,12 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
                                     cvo-validation-errors="{}"
                                     maxLength={1024}
                                     cvo-placeholder="Địa chỉ hiện tại"
-                                    style={{marginRight: '30px'}}
-                                >
+                                    >
                                     {data.address}  
-                                </span>
-                                </span>
-                                <span id="cvo-profile-phone-wraper">
-                                <span
-                                    id="cvo-profile-phone"
-                                    name="cvoData[profile][phone]"
-                                    type="text"
-                                    blockkey="profile"
-                                    fieldkey="phone"
-                                    className="default_min_width"
-                                    cvo-form-field="true"
-                                    contentEditable="true"
-                                    cvo-validatable="true"
-                                    cvo-validation-errors="{}"
-                                    maxLength={256}
-                                    cvo-placeholder="Số điện thoại"
-                                    style={{marginRight: '30px'}}
-                                >
-                                    {data.phone}
-                                </span>
-                                </span>
-                                <span id="cvo-profile-email-wraper">
-                                <span
+                                    </span>
+                                </div>
+                                <div id="cvo-profile-email-wraper">
+                                    <span
                                     id="cvo-profile-email"
                                     name="cvoData[profile][email]"
                                     type="text"
@@ -204,10 +175,31 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
                                     cvo-validation-errors="{}"
                                     maxLength={512}
                                     cvo-placeholder="Địa chỉ email"
-                                >
+                                    >
                                     {data.gmail}
-                                </span>
-                                </span>
+                                    </span>
+                                </div>
+                                <div id="cvo-profile-phone-wraper">
+                                    <span
+                                    id="cvo-profile-phone"
+                                    name="cvoData[profile][phone]"
+                                    type="text"
+                                    blockkey="profile"
+                                    fieldkey="phone"
+                                    className="default_min_width"
+                                    cvo-form-field="true"
+                                    contentEditable="true"
+                                    cvo-validatable="true"
+                                    cvo-validation-errors="{}"
+                                    maxLength={256}
+                                    cvo-placeholder="Số điện thoại"
+                                    >
+                                    {data.phone}
+                                    </span>
+                                </div>
+                                </div>
+                                <div style={{ clear: "both" }} />
+                                <div id="topline" />
                             </div>
                             </div>
                             <div id="cvo-main">
@@ -390,12 +382,13 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
                         <ImgCrop rotationSlider showGrid>
                             <Upload
                                 maxCount={1}
+                                // showUploadList={false}
                                 action="http://localhost:8080/"
                                 listType="picture-card"
                                 onChange={onChange}
                             >
                                 Click chọn ảnh để tải lên!
-                            </Upload>
+                                </Upload>
                         </ImgCrop>
                     </label>
                     </div>
@@ -495,4 +488,4 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
     )
 }
 
-export default Them6;
+export default Them5;

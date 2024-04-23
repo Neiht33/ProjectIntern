@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import "../../css/Tool.css"
+import "../../assert/cssCL/Tool.css"
 import "./Them1.css";
 
 function Them1({getData, data, setImgData, urlIMG, setUrlIMG}) {
@@ -105,7 +105,8 @@ function Them1({getData, data, setImgData, urlIMG, setUrlIMG}) {
                                   const close = document.getElementById('imageEditorWraper')
                                   close.style.display = 'block'
                                   setUpdateUrlIMG(urlIMG)
-                                }}     
+                                }}
+                                style={{display: 'inline'}}     
                               /> 
                             </div>
                             <div>

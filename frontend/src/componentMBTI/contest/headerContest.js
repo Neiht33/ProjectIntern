@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card } from '@material-tailwind/react';
-import '../../assert/css/contest.css';
+import '../../assert/cssMBTI/contest.css';
 import Quiz from './contest';
 const cardData = [
   {

@@ -1,14 +1,15 @@
 import React from "react";
-import {
-  Navbar,
-  Collapse,
-  Typography,
-  IconButton,
-} from "@material-tailwind/react";
+import {Navbar,Collapse,Typography,IconButton,} from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Routes, Route } from 'react-router-dom';
-import App2 from "./App2";
-import App from "./App";
+import { Routes, Route, Link } from 'react-router-dom';
+import CoverLetterApp from "./CoverLetterApp";
+import MBTIApp from "./MBTIApp";
+import HeaderContest from "./componentMBTI/contest/headerContest";
+import MBTI from "./componentMBTI/mbti/mbtigroup";
+import StoreCoverLetter from "./componentCL/StoreCoverLetter";
+import Preview from "./componentCL/Preview";
+import EditCoverLetter from "./componentCL/EditCoverLetter";
+import Themsmain from "./componentCL/Themsmain";
  
 function NavList() {
   return (
@@ -19,9 +20,19 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-          Pages
-        </a>
+        <Link to={'/'} className="flex items-center hover:text-blue-500 transition-colors">
+          CoverLetter
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+        <Link to={'/mbti'} className="flex items-center hover:text-blue-500 transition-colors">
+          MBTI
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -30,27 +41,7 @@ function NavList() {
         className="p-1 font-medium"
       >
         <a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-          Account
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-medium"
-      >
-        <a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-          Blocks
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-medium"
-      >
-        <a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-          Docs
+          Công cụ
         </a>
       </Typography>
     </ul>
@@ -73,7 +64,7 @@ export default function NavbarSimple() {
  
   return (
     <>
-        <Navbar className="mx-auto max-w-screen-xl px-6 py-3">
+        <Navbar className="mx-auto max-w-screen-xl px-6 py-3" style={{maxWidth: '100%', borderRadius: '0'}}>
         <div className="flex items-center justify-between text-blue-gray-900">
             <Typography
             as="a"
@@ -104,8 +95,14 @@ export default function NavbarSimple() {
         </Collapse>
         </Navbar>
         <Routes>
-          <Route path="/" element={<App2 />} />
-          <Route path="/mbti/*" element={<App />} />
+          <Route path="/" element={<CoverLetterApp />} />
+          <Route path="/create/*" element={<Themsmain />} />
+          <Route path="/Cover-Letter-list/" element={<StoreCoverLetter />} />
+          <Route path="/Cover-Letter-list/Preview/:id" element={<Preview />} />
+          <Route path="/Cover-Letter-list/Edit/:id" element={<EditCoverLetter />}/>
+          <Route path="/mbti/*" element={<MBTIApp />} />
+          <Route path='/contest' element={<HeaderContest />} />
+          {/* <Route path='/mbti/MBTI' element={<MBTI />} /> */}
         </Routes>
     </>
   );

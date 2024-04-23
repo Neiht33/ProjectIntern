@@ -1,5 +1,5 @@
 import React from 'react'
-import '../assert/css/home.css'
+import '../assert/cssMBTI/home.css'
 import { Button, Divider, Flex, Radio } from 'antd';
 import Example from './home';
 import HeaderContent from './home/title';

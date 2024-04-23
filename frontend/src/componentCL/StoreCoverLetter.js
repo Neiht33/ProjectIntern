@@ -3,7 +3,7 @@ import { Link, Route, Routes  } from 'react-router-dom';
 import axios from 'axios';
 import html2PDF from 'jspdf-html2canvas';
 import { format } from 'date-fns-tz';
-import '../css/Preview.css'
+import '../assert/cssCL/Preview.css'
 
 function StoreCoverLetter () {
 
