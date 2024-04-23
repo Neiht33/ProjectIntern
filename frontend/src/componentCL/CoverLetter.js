@@ -17,14 +17,14 @@ function CoverLetter () {
 
     useLayoutEffect(() => {
         getData()
-        getCategory()
-        getTableType()
     }, [])
 
     const getData = async () => {
         try {
             const response = await axios.get('http://localhost:8080/api/coverletter/');
             setData(response.data)
+            getCategory()
+            getTableType()
         } catch (error) {
             console.error('Error axios data: ', error)
         }
@@ -62,10 +62,12 @@ function CoverLetter () {
         var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
         var tool = innerDoc.querySelector('.header_editor');
         var cvTitle = innerDoc.querySelector('#cv-title');
+        var navEdit = innerDoc.querySelector('nav');
         var templateColor = document.querySelectorAll('.preview-modal-cv-template-color.js-template-color .template-cv-colors');
         
         tool.style.display = 'none'
         cvTitle.style.display = 'none'
+        navEdit.style.display = 'none'
 
         const setContentEDDIV = innerDoc.querySelectorAll('div')
         const setContentEDSPAN = innerDoc.querySelectorAll('span')

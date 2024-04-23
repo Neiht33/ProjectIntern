@@ -1,15 +1,71 @@
 import React from "react";
 import {Navbar,Collapse,Typography,IconButton,} from "@material-tailwind/react";
+import {Popover,PopoverHandler,PopoverContent,Button,Chip} from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Routes, Route, Link } from 'react-router-dom';
-import CoverLetterApp from "./CoverLetterApp";
-import MBTIApp from "./MBTIApp";
 import HeaderContest from "./componentMBTI/contest/headerContest";
 import MBTI from "./componentMBTI/mbti/mbtigroup";
 import StoreCoverLetter from "./componentCL/StoreCoverLetter";
 import Preview from "./componentCL/Preview";
 import EditCoverLetter from "./componentCL/EditCoverLetter";
 import Themsmain from "./componentCL/Themsmain";
+import CoverLetter from "./componentCL/CoverLetter";
+import Header from "./componentMBTI/header";
+
+ 
+function PopoverWithDescription() {
+
+  const [openPopover, setOpenPopover] = React.useState(false);
+ 
+  const triggers = {
+    onMouseEnter: () => setOpenPopover(true),
+    onMouseLeave: () => setOpenPopover(false),
+  };
+
+  return (
+    <Popover open={openPopover} handler={setOpenPopover}>
+      <PopoverHandler {...triggers}>
+        <Button style={{backgroundColor: '#fff', color: '#000'}}>
+          <Link to={'/'}>
+            CoverLetter
+          </Link>
+        </Button>
+      </PopoverHandler>
+      <PopoverContent {...triggers} className="z-50 max-w-[26rem]">
+        <div className="mb-2 flex items-center gap-3">
+          <Typography
+            as="a"
+            href="#"
+            variant="h6"
+            color="blue-gray"
+            className="font-bold transition-colors hover:text-gray-900"
+            style={{fontWeight: '400'}}
+          >
+            <Link to={'/'}>
+            <i class="fa-solid fa-pager" style={{marginRight: '10px'}}></i>
+              Mẫu Cover Letter
+          </Link>
+          </Typography>
+        </div>
+        <div className="mb-2 flex items-center gap-3">
+          <Typography
+            as="a"
+            href="#"
+            variant="h6"
+            color="blue-gray"
+            className="font-bold transition-colors hover:text-gray-900"
+            style={{fontWeight: '400'}}
+          >
+            <Link to={'/Cover-Letter-list/'}>
+            <i class="fa-solid fa-newspaper" style={{marginRight: '10px'}}></i>
+              Quản Lý Cover Letter
+          </Link>
+          </Typography>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
  
 function NavList() {
   return (
@@ -21,7 +77,7 @@ function NavList() {
         className="p-1 font-medium"
       >
         <Link to={'/'} className="flex items-center hover:text-blue-500 transition-colors">
-          CoverLetter
+          {PopoverWithDescription()}
         </Link>
       </Typography>
       <Typography
@@ -49,6 +105,7 @@ function NavList() {
 }
  
 export default function NavbarSimple() {
+
   const [openNav, setOpenNav] = React.useState(false);
  
   const handleWindowResize = () =>
@@ -68,7 +125,7 @@ export default function NavbarSimple() {
         <div className="flex items-center justify-between text-blue-gray-900">
             <Typography
             as="a"
-            href="#"
+            href="http://localhost:3000/"
             variant="h6"
             className="mr-4 cursor-pointer py-1.5"
             >
@@ -95,13 +152,13 @@ export default function NavbarSimple() {
         </Collapse>
         </Navbar>
         <Routes>
-          <Route path="/" element={<CoverLetterApp />} />
+          <Route path="/" element={<CoverLetter />} />
           <Route path="/create/*" element={<Themsmain />} />
           <Route path="/Cover-Letter-list/" element={<StoreCoverLetter />} />
           <Route path="/Cover-Letter-list/Preview/:id" element={<Preview />} />
           <Route path="/Cover-Letter-list/Edit/:id" element={<EditCoverLetter />}/>
-          <Route path="/mbti/*" element={<MBTIApp />} />
-          <Route path='/contest' element={<HeaderContest />} />
+          <Route path="/mbti/*" element={<Header />} />
+          <Route path='/mbti/contest' element={<HeaderContest />} />
           {/* <Route path='/mbti/MBTI' element={<MBTI />} /> */}
         </Routes>
     </>

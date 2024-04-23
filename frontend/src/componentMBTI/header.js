@@ -17,7 +17,7 @@ export default function Header() {
             <h1>TRẮC NGHIỆM TÍNH CÁCH MBTI</h1>
             <h2 style={{ textAlign: 'center', fontSize: '32px' }}>Khám phá tiềm năng bản thân</h2>
             <Button type="primary" shape="round" style={{ height: '60px', width: '250px', margin: 'auto', fontSize: '30px', background: '#00b14f' }}>
-              <Link to='/contest'>Làm bài test</Link>
+              <Link to='/mbti/contest'>Làm bài test</Link>
             </Button>
           </div>
           <div className='header-home'>
