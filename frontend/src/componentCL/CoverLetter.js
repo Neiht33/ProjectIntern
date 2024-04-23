@@ -641,7 +641,7 @@ function CoverLetter () {
                                                                     cateValue.value = type.idTypeDesign
                                                                     getDataByType(type.idTypeDesign)
                                                                 }}>
-                                                                    {caterogy[type.idTypeDesign - 1].name || ""}
+                                                                    {caterogy[type.idTypeDesign - 1]?.name }
                                                                 </a>
                                                             ) 
                                                         }
