@@ -14,6 +14,18 @@ class coverletterService {
         })
     }
 
+    arrangeByMostUsed() {
+        return new Promise((resolve, reject) => {
+            pool.query('select f.*, COUNT(s."idForm") as soluong from "formCL" f left join "storeCL" s on f.id = s."idForm" group by f.id, s."idForm" order by soluong desc', function (error, result, fields) {
+                if (error) {
+                    reject(error);
+                    return;
+                }
+                resolve(result);
+            });
+        })
+    }
+
     create(id) {
         return new Promise((resolve, reject) => {
             pool.query(`SELECT * from "formCL" f where f.id = ${id}`, function (error, result, fields) {

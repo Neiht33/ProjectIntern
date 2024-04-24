@@ -6,9 +6,9 @@ const multer = require('multer');
 const upload = multer({ dest: './src/public/uploads/' })
 
 router.get('/', coverletter.findAll)
+router.get('/mostUsed', coverletter.arrangeByMostUsed)
 router.get('/create/:id', coverletter.create)
 router.put('/create/:id', upload.single('avatar'), coverletter.createCL)
-// router.post('/', upload.single('image'), products.create)
 
 
 

@@ -14,6 +14,17 @@ class coverletter {
 
     }
 
+    async arrangeByMostUsed(req, res) {
+        try {
+            let data = await coverletterService.arrangeByMostUsed()
+            res.json(data.rows)
+        } catch (error) {
+            console.error('Đã xảy ra lỗi:', error);
+            res.status(500).json({ message: 'Đã xảy ra lỗi khi tạo đơn hàng.' });
+        }
+
+    }
+
     async create(req, res) {
         let id = req.params.id
         if (id) {

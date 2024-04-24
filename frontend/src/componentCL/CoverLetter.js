@@ -8,11 +8,19 @@ function CoverLetter () {
     const [data, setData] = useState([])
     const [caterogy, setCategory] = useState([])
     const [tableType, setTableType] = useState([])
+    const themsColor = [
+        {color1: '#d81b60', color2: '#5e35b1', color3: '#1e88e5', color4: '#388e3c', color5: '#1976d2'},
+        {color1: '#ffb900', color2: '#cec1cd', color3: '#bcdfc1', color4: '#84d8f1', color5: '#d6d856'},
+        {color1: '#1e88e5', color2: '#ea6042', color3: '#7cb342', color4: '#447ac4', color5: '#6eaecd'},
+        {color1: '#039be5', color2: '#43a047', color3: '#194052', color4: '#f4511e', color5: '#c2185b'},
+        {color1: '#ffb900', color2: '#e53935', color3: '#5e35b1', color4: '#1976d2', color5: '#263238'},
+        {color1: '#447ac4', color2: '#e53935', color3: '#00796b', color4: '#194052', color5: '#1e88e5'}
+    ]
 
     const regex = /\s/g;
     let [formModal, setFormModal] = useState({
         cvTitle: '',
-        id: ''
+        id: 1
     })
 
     useLayoutEffect(() => {
@@ -39,6 +47,15 @@ function CoverLetter () {
         }
     }
 
+    const getDataByMostUsed = async (id) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/coverletter/mostUsed`);
+            setData(response.data)
+        } catch (error) {
+            console.error('Error axios data: ', error)
+        }
+    }
+
     const getCategory = async () => {
         try {
             const response = await axios.get('http://localhost:8080/api/category/');
@@ -56,6 +73,7 @@ function CoverLetter () {
             console.error('Error axios data: ', error)
         }
     }
+
 
     const handleEditIframe = () => {
         var iframe = document.getElementById('template-preview-iframe');
@@ -79,6 +97,7 @@ function CoverLetter () {
         })
 
         templateColor.forEach((color, index, colors) => {
+            color.style.cursor = 'pointer'
             color.addEventListener('click', function() {
                 colors.forEach(color => {
                     color.firstChild.style.visibility = 'hidden'
@@ -347,6 +366,11 @@ function CoverLetter () {
                                         id="newest"
                                         name="radio"
                                         defaultValue={1}
+                                        onChange={(e) => {
+                                            if(e.target.checked){
+                                                getData()
+                                            }
+                                        }}
                                         />
                                         <label htmlFor="newest">Mới cập nhật</label>
                                     </div>
@@ -356,6 +380,11 @@ function CoverLetter () {
                                         id="most_popular"
                                         name="radio"
                                         defaultValue="hot"
+                                        onChange={(e) => {
+                                            if(e.target.checked){
+                                                getDataByMostUsed()
+                                            }
+                                        }}
                                         />
                                         <label htmlFor="most_popular">Được dùng nhiều nhất</label>
                                     </div>
@@ -581,7 +610,7 @@ function CoverLetter () {
                             </div>
                             <div className="col-md-12" id="cover-letter-template-item">
                                 <div className="row">
-                                    {data.map(item => (
+                                    {data.map((item, index) => (
                                         <div className="col-md-6 col-lg-4 mt-4">
                                         <div className="template-cover-letter-item">
                                             <div className="new-template">
@@ -651,7 +680,7 @@ function CoverLetter () {
                                                 <p className="cv-title">
                                                 <a
                                                     className="mr-2"
-                                                    href="https://123job.vn/cover-letter/mau-cover-letter-an-tuong-chuyen-nghiep-tieng-viet"
+                                                    href="javasript:void(0)"
                                                     title={item.cvTitle}
                                                 >
                                                     {item.cvTitle}
@@ -664,19 +693,19 @@ function CoverLetter () {
                                                 <div style={{ display: "flex" }}>
                                                     <div
                                                     className="template-cv-colors"
-                                                    style={{ backgroundColor: "#D81B60" }}
+                                                    style={{ backgroundColor: `${themsColor[item.id-1].color1}`}}
                                                     ></div>
                                                     <div
                                                     className="template-cv-colors"
-                                                    style={{ backgroundColor: "#5E35B1" }}
+                                                    style={{ backgroundColor: `${themsColor[item.id-1].color2}` }}
                                                     ></div>
                                                     <div
                                                     className="template-cv-colors"
-                                                    style={{ backgroundColor: "#1E88E5" }}
+                                                    style={{ backgroundColor: `${themsColor[item.id-1].color3}` }}
                                                     ></div>
                                                     <div
                                                     className="template-cv-colors"
-                                                    style={{ backgroundColor: "#388E3C" }}
+                                                    style={{ backgroundColor: `${themsColor[item.id-1].color4}` }}
                                                     ></div>
                                                 </div>
                                                 <span className="label label-info mbh">Miễn phí</span>
@@ -874,11 +903,10 @@ function CoverLetter () {
                                 <div className="preview-modal-color-selector">
                                 <a
                                     className="preview-modal-cv-template-color js-template-color"
-                                    data-color="#e53935"
                                 >
                                     <div
                                     className="template-cv-colors"
-                                    style={{ backgroundColor: "#e53935" }}
+                                    style={{ backgroundColor: `${themsColor[formModal.id-1].color1}` }}
                                     >
                                     <i
                                         style={{ visibility: "hidden", color: "white" }}
@@ -892,7 +920,7 @@ function CoverLetter () {
                                 >
                                     <div
                                     className="template-cv-colors"
-                                    style={{ backgroundColor: "#7CB342" }}
+                                    style={{ backgroundColor: `${themsColor[formModal.id-1].color2}` }}
                                     >
                                     <i
                                         style={{ visibility: "hidden", color: "white" }}
@@ -907,7 +935,7 @@ function CoverLetter () {
                                 >
                                     <div
                                     className="template-cv-colors"
-                                    style={{ backgroundColor: "#F4511E" }}
+                                    style={{ backgroundColor: `${themsColor[formModal.id-1].color3}` }}
                                     >
                                     <i
                                         style={{ visibility: "hidden", color: "white" }}
@@ -922,7 +950,7 @@ function CoverLetter () {
                                 >
                                     <div
                                     className="template-cv-colors"
-                                    style={{ backgroundColor: "#447ac4" }}
+                                    style={{ backgroundColor: `${themsColor[formModal.id-1].color4}` }}
                                     >
                                     <i
                                         style={{ visibility: "hidden", color: "white" }}
@@ -937,7 +965,7 @@ function CoverLetter () {
                                 >
                                     <div
                                     className="template-cv-colors"
-                                    style={{ backgroundColor: "#069ca4" }}
+                                    style={{ backgroundColor: `${themsColor[formModal.id-1].color5}` }}
                                     >
                                     <i
                                         style={{ visibility: "hidden", color: "white" }}
