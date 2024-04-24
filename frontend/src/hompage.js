@@ -3,17 +3,21 @@ import {Navbar,Collapse,Typography,IconButton,} from "@material-tailwind/react";
 import {Popover,PopoverHandler,PopoverContent,Button,Chip} from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Routes, Route, Link } from 'react-router-dom';
-import HeaderContest from "./componentMBTI/contest/headerContest";
-import MBTI from "./componentMBTI/mbti/mbtigroup";
-import StoreCoverLetter from "./componentCL/StoreCoverLetter";
-import Preview from "./componentCL/Preview";
-import EditCoverLetter from "./componentCL/EditCoverLetter";
-import Themsmain from "./componentCL/Themsmain";
-import CoverLetter from "./componentCL/CoverLetter";
-import Header from "./componentMBTI/header";
+import HeaderContest from "./components/componentMBTI/contest/headerContest";
+// import MBTI from "./componentMBTI/mbti/mbtigroup";
+import StoreCoverLetter from "./components/componentCL/StoreCoverLetter";
+import Preview from "./components/componentCL/Preview";
+import EditCoverLetter from "./components/componentCL/EditCoverLetter";
+import Themsmain from "./components/componentCL/Themsmain";
+import CoverLetter from "./components/componentCL/CoverLetter";
+import Header from "./components/componentMBTI/header";
+import Home from './components/componentTools/tinhlai';
+import Lapkehoachtietkiem from './components/componentTools/lapkehoachtietkiem';
+import Thatnghiep from './components/componentTools/thatnghiep';
+import Tinhbaohiemxahoi1lan from './components/componentTools/tinhbaohiemxahoi1lan';
 
  
-function PopoverWithDescription() {
+function PopoverWithDescriptionCL() {
 
   const [openPopover, setOpenPopover] = React.useState(false);
  
@@ -66,6 +70,89 @@ function PopoverWithDescription() {
     </Popover>
   );
 }
+
+function PopoverWithDescriptionTools() {
+
+  const [openPopover, setOpenPopover] = React.useState(false);
+ 
+  const triggers = {
+    onMouseEnter: () => setOpenPopover(true),
+    onMouseLeave: () => setOpenPopover(false),
+  };
+
+  return (
+    <Popover open={openPopover} handler={setOpenPopover}>
+      <PopoverHandler {...triggers}>
+        <Button style={{backgroundColor: '#fff', color: '#000'}}>
+          <Link to={'/tools'}>
+            Công cụ
+          </Link>
+        </Button>
+      </PopoverHandler>
+      <PopoverContent {...triggers} className="z-50 max-w-[26rem]">
+        <div className="mb-2 flex items-center gap-3">
+          <Typography
+            as="a"
+            href="#"
+            variant="h6"
+            color="blue-gray"
+            className="font-bold transition-colors hover:text-gray-900"
+            style={{fontWeight: '400'}}
+          >
+            <Link to={'/tools'}>
+              <i class="fa-solid fa-pager" style={{marginRight: '10px'}}></i>
+              Tính lãi xuất kép
+          </Link>
+          </Typography>
+        </div>
+        <div className="mb-2 flex items-center gap-3">
+          <Typography
+            as="a"
+            href="#"
+            variant="h6"
+            color="blue-gray"
+            className="font-bold transition-colors hover:text-gray-900"
+            style={{fontWeight: '400'}}
+          >
+            <Link to={'/tools/tietkiem'}>
+            <i class="fa-solid fa-newspaper" style={{marginRight: '10px'}}></i>
+              Lập kế hoạch tiết kiệm
+          </Link>
+          </Typography>
+        </div>
+        <div className="mb-2 flex items-center gap-3">
+          <Typography
+            as="a"
+            href="#"
+            variant="h6"
+            color="blue-gray"
+            className="font-bold transition-colors hover:text-gray-900"
+            style={{fontWeight: '400'}}
+          >
+            <Link to={'/tools/that-nghiep'}>
+            <i class="fa-solid fa-newspaper" style={{marginRight: '10px'}}></i>
+              Tính bảo hiểm thất nghiệp
+          </Link>
+          </Typography>
+        </div><div className="mb-2 flex items-center gap-3">
+          <Typography
+            as="a"
+            href="#"
+            variant="h6"
+            color="blue-gray"
+            className="font-bold transition-colors hover:text-gray-900"
+            style={{fontWeight: '400'}}
+          >
+            <Link to={'/tools/bao-hiem'}>
+              <i class="fa-solid fa-newspaper" style={{marginRight: '10px'}}></i>
+              Tính bảo hiểm xã hội một lần
+          </Link>
+          </Typography>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
  
 function NavList() {
   return (
@@ -77,7 +164,7 @@ function NavList() {
         className="p-1 font-medium"
       >
         <Link to={'/'} className="flex items-center hover:text-blue-500 transition-colors">
-          {PopoverWithDescription()}
+          {PopoverWithDescriptionCL()}
         </Link>
       </Typography>
       <Typography
@@ -96,9 +183,9 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-          Công cụ
-        </a>
+        <Link to={'/tools'} className="flex items-center hover:text-blue-500 transition-colors">
+          {PopoverWithDescriptionTools()}
+        </Link>
       </Typography>
     </ul>
   );
@@ -160,6 +247,10 @@ export default function NavbarSimple() {
           <Route path="/mbti/*" element={<Header />} />
           <Route path='/mbti/contest' element={<HeaderContest />} />
           {/* <Route path='/mbti/MBTI' element={<MBTI />} /> */}
+          <Route path='/tools' element={<Home />} />
+          <Route path='/tools/tietkiem' element={<Lapkehoachtietkiem />} />
+          <Route path='/tools/that-nghiep' element={<Thatnghiep />} />
+          <Route path='/tools/bao-hiem' element={<Tinhbaohiemxahoi1lan />} />
         </Routes>
     </>
   );
