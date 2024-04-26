@@ -42,37 +42,34 @@ export default function Thatnghiep() {
         setSelectedCategory(category);
     };
     ///lương đóng bảo hiểm không thay đổi trong 6 tháng
-
-
-
-    useEffect(() => {
-        let callradio2 = document.querySelector(".chedo")
-        let callradio3 = document.querySelector(".chedothay")
-        if (callradio2.checked) {
-            let totalAmountyear = calculateTotalAmount(formData.p);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyear)
-        } else if (callradio3.checked) {
-            let totalAmountyeararea5 = calculateTotalAmountArea5(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea5)
-        }
-    },)
-    useEffect(() => {
-        let callradio = document.querySelector(".chedo")
-        let callradiosalary1 = document.querySelector(".private")
-        if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
-            let totalAmountyeararea1 = calculateTotalAmountArea1(formData.p);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea1)
-        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung2") {
-            let totalAmountyeararea2 = calculateTotalAmountArea2(formData.p);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea2)
-        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung3") {
-            let totalAmountyeararea3 = calculateTotalAmountArea3(formData.p);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea3)
-        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung4") {
-            let totalAmountyeararea4 = calculateTotalAmountArea4(formData.p);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea4)
-        }
-    },)
+    // useEffect(() => {
+    //     let callradio2 = document.querySelector(".chedo")
+    //     let callradio3 = document.querySelector(".chedothay")
+    //     if (callradio2.checked) {
+    //         let totalAmountyear = calculateTotalAmount(formData.p);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyear)
+    //     } else if (callradio3.checked) {
+    //         let totalAmountyeararea5 = calculateTotalAmountArea5(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea5)
+    //     }
+    // },)
+    // useEffect(() => {
+    //     let callradio = document.querySelector(".chedo")
+    //     let callradiosalary1 = document.querySelector(".private")
+    //     if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
+    //         let totalAmountyeararea1 = calculateTotalAmountArea1(formData.p);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea1)
+    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung2") {
+    //         let totalAmountyeararea2 = calculateTotalAmountArea2(formData.p);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea2)
+    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung3") {
+    //         let totalAmountyeararea3 = calculateTotalAmountArea3(formData.p);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea3)
+    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung4") {
+    //         let totalAmountyeararea4 = calculateTotalAmountArea4(formData.p);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea4)
+    //     }
+    // },)
 
     function calculateTotalAmount(principal) {
         let BaseSalary = 1800000; //02
@@ -149,23 +146,23 @@ export default function Thatnghiep() {
         }
     }
     /// lương đóng bảo hiểm thay đổi trong 6 tháng
-    useEffect(() => {
-        let callradio = document.querySelector(".chedothay")
-        let callradiosalary1 = document.querySelector(".private")
-        if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
-            let totalAmountyeararea6 = calculateTotalAmountArea6(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea6)
-        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung2") {
-            let totalAmountyeararea7 = calculateTotalAmountArea7(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea7)
-        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung3") {
-            let totalAmountyeararea8 = calculateTotalAmountArea8(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea8)
-        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung4") {
-            let totalAmountyeararea9 = calculateTotalAmountArea9(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea9)
-        }
-    },)
+    // useEffect(() => {
+    //     let callradio = document.querySelector(".chedothay")
+    //     let callradiosalary1 = document.querySelector(".private")
+    //     if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
+    //         let totalAmountyeararea6 = calculateTotalAmountArea6(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea6)
+    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung2") {
+    //         let totalAmountyeararea7 = calculateTotalAmountArea7(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea7)
+    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung3") {
+    //         let totalAmountyeararea8 = calculateTotalAmountArea8(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea8)
+    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung4") {
+    //         let totalAmountyeararea9 = calculateTotalAmountArea9(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea9)
+    //     }
+    // },)
     //
 
 
@@ -259,7 +256,67 @@ export default function Thatnghiep() {
             return MonthlyAllowance;
         }
     }
+    function handleSubmit() {
+        let callradio = document.querySelector(".chedo")
+        let callradiosalary1 = document.querySelector(".private")
+        let callradio1 = document.querySelector(".chedothay")
+        let callradiosalary2 = document.querySelector(".private")
+        let callradio2 = document.querySelector(".chedo")
+        let callradio3 = document.querySelector(".chedothay")
+        if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
+            let calculatedTotal = calculateTotalAmountArea1(formData.p);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung2") {
+            let calculatedTotal = calculateTotalAmountArea2(formData.p);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung3") {
+            let calculatedTotal = calculateTotalAmountArea3(formData.p);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung4") {
+            let calculatedTotal = calculateTotalAmountArea4(formData.p);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        }
+        if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung1") {
+            let calculatedTotal = calculateTotalAmountArea6(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        } else if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung2") {
+            let calculatedTotal = calculateTotalAmountArea7(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        } else if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung3") {
+            let calculatedTotal = calculateTotalAmountArea8(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        } else if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung4") {
+            let calculatedTotal = calculateTotalAmountArea9(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        }
+        if (callradio2.checked) {
+            let calculatedTotal = calculateTotalAmount(formData.p);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        } else if (callradio3.checked) {
+            let calculatedTotal = calculateTotalAmountArea5(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal)
+        }
+        if (formData.n < 12) {
+            setInherit("không đươc hưởng BHTN")
+        } else if (formData.n >= 12 && formData.n <= 36) {
+            setInherit("Được hưởng 3 tháng BHTN")
+        } else if (formData.n > 36) {
+            let ketqua = formData.n / 12;
+            let roundedNumber = Math.floor(ketqua);
+            setInherit(` Được hưởng ${roundedNumber} tháng BHTN`)
 
+        }
+    }
     ///thời gian được hưởng bảo hiểm thất nghiệp 
     // function inheritunemployment()
 
@@ -429,68 +486,7 @@ export default function Thatnghiep() {
                     </div>
                 </div>
                 <div className='calculation-button'>
-                    <button type='submit' onClick={() => {
-                        let callradio = document.querySelector(".chedo")
-                        let callradiosalary1 = document.querySelector(".private")
-                        let callradio1 = document.querySelector(".chedothay")
-                        let callradiosalary2 = document.querySelector(".private")
-                        let callradio2 = document.querySelector(".chedo")
-                        let callradio3 = document.querySelector(".chedothay")
-                        if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
-                            let totalAmountyeararea1 = calculateTotalAmountArea1(formData.p);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea1)
-                            setTotal(totalAmountyeararea1);
-                        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung2") {
-                            let totalAmountyeararea2 = calculateTotalAmountArea2(formData.p);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea2)
-                            setTotal(totalAmountyeararea2);
-                        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung3") {
-                            let totalAmountyeararea3 = calculateTotalAmountArea3(formData.p);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea3)
-                            setTotal(totalAmountyeararea3);
-                        } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung4") {
-                            let totalAmountyeararea4 = calculateTotalAmountArea4(formData.p);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea4)
-                            setTotal(totalAmountyeararea4);
-                        }
-                        if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung1") {
-                            let totalAmountyeararea6 = calculateTotalAmountArea6(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea6)
-                            setTotal(totalAmountyeararea6);
-                        } else if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung2") {
-                            let totalAmountyeararea7 = calculateTotalAmountArea7(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea7)
-                            setTotal(totalAmountyeararea7);
-                        } else if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung3") {
-                            let totalAmountyeararea8 = calculateTotalAmountArea8(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea8)
-                            setTotal(totalAmountyeararea8);
-                        } else if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung4") {
-                            let totalAmountyeararea9 = calculateTotalAmountArea9(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea9)
-                            setTotal(totalAmountyeararea9);
-                        }
-                        if (callradio2.checked) {
-                            let totalAmountyear = calculateTotalAmount(formData.p);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyear)
-                            setTotal(totalAmountyear);
-                        } else if (callradio3.checked) {
-                            let totalAmountyeararea5 = calculateTotalAmountArea5(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-                            console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea5)
-                            setTotal(totalAmountyeararea5)
-                        }
-                        if (formData.n < 12) {
-                            setInherit("không đươc hưởng BHTN")
-                        } else if (formData.n >= 12 && formData.n <= 36) {
-                            setInherit("không đươc hưởng BHTN")
-                        } else if (formData.n > 36) {
-                            let ketqua = formData.n / 12;
-                            let roundedNumber = Math.floor(ketqua);
-                            setInherit(` Được hưởng ${roundedNumber} tháng BHTN`)
-
-                        }
-
-                    }}>
+                    <button type='submit' onClick={handleSubmit}>
                         Tính Bảo Hiểm
                     </button>
                 </div>
@@ -498,7 +494,7 @@ export default function Thatnghiep() {
                 {
                     <div className='Giatrihienthi'>
                         <p>Kết Quả</p>
-                        <p>* Mức hưởng BHTN hàng tháng: {formattedAmount} (Tháng)</p>
+                        <p> Mức hưởng BHTN hàng tháng: {total} (Tháng)</p>
                         <p> {inherit}  </p>
                     </div>}
             </form >

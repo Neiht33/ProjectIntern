@@ -31,7 +31,6 @@ export default function Home() {
     const getFormData = (event) => {
         event.preventDefault();
         console.log(formData)
-
         if (formData.giatri === 'nam') {
             let totalAmountyear = calculateTotalAmountyear(formData.p, formData.month, formData.n, formData.i, formData.giatri);
             console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyear)

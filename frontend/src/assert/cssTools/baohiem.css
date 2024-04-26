@@ -1,7 +1,7 @@
 .table {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
 }
 
 .navbar-title {
@@ -10,11 +10,12 @@
 }
 
 .title-second {
-    width: 186px;
+    width: 220px;
 }
 
 .title-first p {
-    width: 747px;
+    padding-right: 716px;
+
 }
 
 
@@ -28,16 +29,13 @@
 
 .element-table-right input {
     padding: 10px;
+    border: 2px solid #E5E5E5;
 }
 
 .navbar {
     display: flex;
-
-    button {
-        font-size: larger;
-        margin: 0px 40px 0px 0px;
-    }
-
+    font-size: larger;
+    margin: 0px 40px 0px 0px;
 }
 
 
@@ -81,5 +79,5 @@
 }
 
 .title-thirt p {
-    width: 224px;
+    width: 254px;
 }
