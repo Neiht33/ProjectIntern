@@ -60,7 +60,7 @@ body {
 }
 
 #paragraph {
-  max-width: 1170px;
+  max-width: 1410px;
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
@@ -70,13 +70,12 @@ body {
   border-radius: 10px;
   background-color: white;
 
+}
 
-
-  h3 {
-    background-color: #00b14f;
-    color: white;
-    margin: 0;
-  }
+#paragraph h3 {
+  background-color: #00b14f;
+  color: white;
+  margin: 0;
 }
 
 .principal {
@@ -94,6 +93,8 @@ body {
   flex-wrap: wrap;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   justify-content: space-between;
   background-color: #e7ecf0;
 }
@@ -126,11 +127,11 @@ body {
   background-color: #e7ecf0;
 }
 
-.principal-right {
-  input {
-    border: 2px solid #E5E5E5;
-    padding: 10px;
-  }
+.principal-right input {
+
+  border: 2px solid #E5E5E5;
+  padding: 10px;
+
 
 }
 
@@ -158,29 +159,23 @@ body {
   font-weight: bold;
   color: #F4F7FB;
   background-color: #00b14f;
-  margin-left: 530px;
-  margin-right: 530px;
   align-items: center;
 
 }
 
-.title {
+.title h2 {
+  margin: 0;
+  margin-bottom: 10px;
 
-  h2 {
-    margin: 0;
-    margin-bottom: 10px;
-  }
 }
 
 .form-control-select2 {
   border: 2px solid rgb(19, 18, 18);
   padding: 10px;
-  padding-right: 91.5px;
+  padding-right: 93.5px;
   border-radius: 3px;
+  align-items: center;
 
-  option {
-    align-items: center;
-  }
 }
 
 .Giatrihienthi {
