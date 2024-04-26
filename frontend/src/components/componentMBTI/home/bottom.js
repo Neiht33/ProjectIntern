@@ -180,7 +180,7 @@ export default function Bottom() {
             <div key={index} className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4"
               style={{ perspective: '1000px', padding: '10px' }}>
               <Card
-                className="max-w-[263px] h-[408px] bg-clip-border rounded-xl bg-white text-gray-700 shadow-md flex flip-card"
+                className="max-w-[263px] h-[435px] bg-clip-border rounded-xl bg-white text-gray-700 shadow-md flex flip-card"
                 style={{ borderRadius: "20px", background: card.backgroup }}
               >
                 <div className="flip-card-inner">
@@ -194,7 +194,7 @@ export default function Bottom() {
                     </div>
                   </div>
                   <div className="flip-card-back">
-                    <h2 style={{ marginBottom: '10px', fontSize: '20px' }}>{card.content}</h2>
+                    <h2 style={{ marginTop: '35%', fontSize: '20px' }}>{card.content}</h2>
                     <button
                       class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg border border-gray-900 text-gray-900 hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] flex items-center gap-3"
                       type="button">
@@ -216,7 +216,7 @@ export default function Bottom() {
             <div key={index} className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4"
               style={{ perspective: '1000px', padding: '10px' }}>
               <Card
-                className="max-w-[263px] h-[408px] bg-clip-border rounded-xl bg-white text-gray-700 shadow-md flex flip-card"
+                className="max-w-[263px] h-[435px] bg-clip-border rounded-xl bg-white text-gray-700 shadow-md flex flip-card"
                 style={{ borderRadius: "20px", background: card.backgroup }}
               >
                 <div className="flip-card-inner">
@@ -230,7 +230,7 @@ export default function Bottom() {
                     </div>
                   </div>
                   <div className="flip-card-back">
-                    <h2 style={{ marginBottom: '10px', fontSize: '20px' }}>{card.content}</h2>
+                    <h2 style={{ marginTop: '35%', fontSize: '20px' }}>{card.content}</h2>
                     <button
                       class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-full border border-gray-900 text-gray-900 hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] flex items-center gap-3"
                       type="button">

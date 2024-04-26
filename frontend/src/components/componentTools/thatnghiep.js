@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../../assert/styles/thatnghiep.css'
+import '../../assert/cssTools/thatnghiep.css'
 export default function Thatnghiep() {
     const [formData, setFormData] = useState({
         p: '',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../../assert/styles/baohiem.css'
+import '../../assert/cssTools/baohiem.css'
 export default function Tinhbaohiemxahoi1lan() {
     const [formData, setFormData] = useState({
         Wage: '',
@@ -38,30 +38,36 @@ export default function Tinhbaohiemxahoi1lan() {
 
     function tinhSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
         var ketQua = [];
-
         while (namBatDau < namKetThuc || (namBatDau === namKetThuc && thangBatDau <= thangKetThuc)) {
-            var thang = thangBatDau;
-            var nam = namBatDau;
+            var thangKetThucCuaNamHienTai = (namBatDau === namKetThuc) ? thangKetThuc : 12;
+            var soNam = namKetThuc - namBatDau;
+            var soThang = thangKetThucCuaNamHienTai - thangBatDau + 1;
 
-            var thangKetThucCuaNamHienTai = (nam === namKetThuc) ? thangKetThuc : 12;
-
-            if (thangBatDau === 0) {
-                thang = 1;
+            if (soThang < 0) {
+                soNam--;
+                soThang += 12;
             }
 
-            if (namBatDau === namKetThuc && thangKetThucCuaNamHienTai === thang) {
-                ketQua.push({ thangBatDau: thang, namBatDau: nam, thangKetThuc: thangKetThuc, namKetThuc: namKetThuc });
-                break;
-            }
-
-            ketQua.push({ thangBatDau: thang, namBatDau: nam, thangKetThuc: thangKetThucCuaNamHienTai, namKetThuc: nam });
-
+            ketQua.push({ thangBatDau: thangBatDau, namBatDau: namBatDau, thangKetThuc: thangKetThucCuaNamHienTai, namKetThuc: namBatDau + soNam });
             thangBatDau = 1;
             namBatDau++;
         }
-
         return ketQua;
     }
+
+    // Hàm tính số năm và số tháng
+    function tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
+        var soNam = namKetThuc - namBatDau;
+        var soThang = (thangKetThuc - thangBatDau) + 1;
+
+        if (soThang >= 12) {
+            soNam += Math.floor(soThang / 12);
+            soThang = soThang % 12;
+        }
+        return { soNam: soNam, soThang: soThang };
+    }
+
+
     // Sử dụng hàm
     let tong = 0;
     let tongthang = 0;
@@ -94,89 +100,50 @@ export default function Tinhbaohiemxahoi1lan() {
         });
 
         let TBBHXH = tong / tongthang
-        console.log(TBBHXH.toFixed(0));
         console.log(ketQua);
-
-        console.log(TinhKetQuaBHXH(TBBHXH, thangBatDau, namBatDau, thangKetThuc, namKetThuc))
+        console.log(tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc))
     }
+
+
     // Hàm xử lý sự kiện thay đổi trên các select
-    function tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
-        var soNam = namKetThuc - namBatDau;
-        var soThang = (thangKetThuc - thangBatDau) + 1;
 
-        if (soThang < 0) {
-            soNam--;
-            soThang += 12;
-        }
-
-        return { soNam: soNam, soThang: soThang };
-    }
     function TinhKetQuaBHXH(TBBHXH, thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
-        // const giatritruoc2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
-        // const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc)
-        if (namBatDau < 2014 && namKetThuc >= 2014) {
-            const giatritruoc2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, 1, 2014);
-            const giatrisau2014 = tinhTongSoNamVaThang(12, 2013, thangKetThuc, namKetThuc)
-            console.log(giatrisau2014);
-            console.log(giatritruoc2014);
-            if (giatrisau2014.soThang > 7) {
-                giatrisau2014.soNam = giatrisau2014.soNam + 1 + 1;
-            } else {
-                giatrisau2014.soNam = giatrisau2014.soNam + 1 + 0.5
-            }
+        let ketQua = 0;
+        let ketQua1 = 0;
+        let ketQua2 = 0;
+
+        if (namBatDau < 2014) {
+            const giatritruoc2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, 12, 2013);
+            const giatrisau2014 = tinhTongSoNamVaThang(1, 2014, thangKetThuc, namKetThuc);
+
             if (giatritruoc2014.soThang > 7) {
-                giatritruoc2014.soNam = giatritruoc2014.soNam - 1 + 1;
+                giatritruoc2014.soNam += 1;
             } else {
-                giatritruoc2014.soNam = giatritruoc2014.soNam - 1 + 0.5
-            }
-            let ketQua = (1.5 * TBBHXH * giatritruoc2014.soNam) + (2 * TBBHXH * giatrisau2014.soNam);
-            return ketQua;
-        } else if (namBatDau < 2014) {
-            const giatritruoc2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
-            console.log(giatritruoc2014);
-            if (giatritruoc2014.soThang > 7) {
-                giatritruoc2014.soThang = 1;
-            } else {
-                giatritruoc2014.soThang = 0.5;
-            }
-            // Tính mức hưởng BHXH một lần trước năm 2014
-            let mucHuongTruoc2014 = 1.5 * TBBHXH * giatritruoc2014.soNam;
-
-            if (giatritruoc2014.soThang === 1) {
-                let mucHuongSau2014nguyen = 2 * TBBHXH * 1;
-                let ketQua2 = mucHuongTruoc2014 + mucHuongSau2014nguyen;
-                return ketQua2;
-
-            } else if (giatritruoc2014.soThang === 0.5) {
-                let mucHuongSau2014khong = 2 * TBBHXH * 0.5;
-                let ketQua4 = mucHuongTruoc2014 + mucHuongSau2014khong;
-                return ketQua4;
+                giatritruoc2014.soNam += 0.5;
             }
 
-        } else if (namBatDau >= 2014) {
-            const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc)
-            console.log(giatrisau2014);
             if (giatrisau2014.soThang > 7) {
-                giatrisau2014.soNam = giatrisau2014.soNam + 1;
+                giatrisau2014.soNam += 1;
             } else {
-                giatrisau2014.soNam = giatrisau2014.soNam + 0.5;
+                giatrisau2014.soNam += 0.5;
             }
-            let ketQua1 = (2 * TBBHXH * giatrisau2014.soNam);
-            return ketQua1;
+
+            ketQua1 = (1.5 * TBBHXH * giatritruoc2014.soNam);
+            ketQua2 = (2 * TBBHXH * giatrisau2014.soNam);
+        } else {
+            const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
+
+            if (giatrisau2014.soThang > 7) {
+                giatrisau2014.soNam += 1;
+            } else {
+                giatrisau2014.soNam += 0.5;
+            }
+
+            ketQua = (2 * TBBHXH * giatrisau2014.soNam);
         }
-        // else if(giatrisau2014.soNam <= 1 || giatritruoc2014.soNam <= 1 ){
 
-        //     let ketQua3 =  0.22 *  tong ;
-
-        //     return ketQua3;
-        // }
+        return ketQua1 + ketQua2 + ketQua;
     }
-
-
-
-
-
-
 
 
     return (
@@ -452,7 +419,6 @@ export default function Tinhbaohiemxahoi1lan() {
                                     <option value="1995" >1995</option>
                                     <option value="1994" >1994</option>
                                 </select>
-
                             </div>
                             <div className='element-table'>
                                 <div className='element-table-right'>
