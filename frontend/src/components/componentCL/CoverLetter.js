@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useRef, useState, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import axios from 'axios';
 import '../../assert/cssCL/App1.css'
 
@@ -25,14 +25,14 @@ function CoverLetter () {
 
     useLayoutEffect(() => {
         getData()
+        getCategory()
+        getTableType()
     }, [])
 
     const getData = async () => {
         try {
             const response = await axios.get('http://localhost:8080/api/coverletter/');
             setData(response.data)
-            getCategory()
-            getTableType()
         } catch (error) {
             console.error('Error axios data: ', error)
         }
@@ -73,7 +73,6 @@ function CoverLetter () {
             console.error('Error axios data: ', error)
         }
     }
-
 
     const handleEditIframe = () => {
         var iframe = document.getElementById('template-preview-iframe');
@@ -135,7 +134,7 @@ function CoverLetter () {
 
     return (
         <>
-            <div className="template-container-list container">
+            <div className="template-container-list container" style={{marginTop: '20px'}}>
                 <div className="template-container-head ">
                         <h1>Tổng hợp mẫu Cover Letter (thư xin việc) chuẩn độc đáo, Tải Top Mẫu Cover Letter Online miễn phí 2024</h1>
             

@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect } from 'react';
-import { Link, Route, Routes, useParams } from 'react-router-dom';
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import './Them3.css'
 
 

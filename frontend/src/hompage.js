@@ -1,6 +1,6 @@
 import React from "react";
-import {Navbar,Collapse,Typography,IconButton,} from "@material-tailwind/react";
-import {Popover,PopoverHandler,PopoverContent,Button,Chip} from "@material-tailwind/react";
+import {Navbar,Collapse,Typography,IconButton, Popover,PopoverHandler,PopoverContent,Button} from "@material-tailwind/react";
+import {Dialog,Card,CardHeader,CardBody,CardFooter,Input,Checkbox,} from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Routes, Route, Link } from 'react-router-dom';
 import HeaderContest from "./components/componentMBTI/contest/headerContest";
@@ -89,8 +89,8 @@ function PopoverWithDescriptionTools() {
           </Link>
         </Button>
       </PopoverHandler>
-      <PopoverContent {...triggers} className="z-50 max-w-[26rem]">
-        <div className="mb-2 flex items-center gap-3">
+      <PopoverContent {...triggers} className="z-50 max-w-[26rem]" >
+        <div className="mb-2 flex items-center gap-3" style={{minWidth: '240px'}}>
           <Typography
             as="a"
             href="#"
@@ -100,7 +100,7 @@ function PopoverWithDescriptionTools() {
             style={{fontWeight: '400'}}
           >
             <Link to={'/tools'}>
-              <i class="fa-solid fa-pager" style={{marginRight: '10px'}}></i>
+              <i class="fa-solid fa-arrow-turn-up" style={{marginRight: '10px'}}></i>
               Tính lãi xuất kép
           </Link>
           </Typography>
@@ -115,7 +115,7 @@ function PopoverWithDescriptionTools() {
             style={{fontWeight: '400'}}
           >
             <Link to={'/tools/tietkiem'}>
-            <i class="fa-solid fa-newspaper" style={{marginRight: '10px'}}></i>
+              <i class="fa-solid fa-arrow-trend-up" style={{marginRight: '10px'}}></i>
               Lập kế hoạch tiết kiệm
           </Link>
           </Typography>
@@ -130,7 +130,7 @@ function PopoverWithDescriptionTools() {
             style={{fontWeight: '400'}}
           >
             <Link to={'/tools/that-nghiep'}>
-            <i class="fa-solid fa-newspaper" style={{marginRight: '10px'}}></i>
+              <i class="fa-solid fa-briefcase" style={{marginRight: '10px'}}></i>
               Tính bảo hiểm thất nghiệp
           </Link>
           </Typography>
@@ -144,13 +144,93 @@ function PopoverWithDescriptionTools() {
             style={{fontWeight: '400'}}
           >
             <Link to={'/tools/bao-hiem'}>
-              <i class="fa-solid fa-newspaper" style={{marginRight: '10px'}}></i>
+              <i class="fa-solid fa-calculator" style={{marginRight: '10px'}}></i>
               Tính bảo hiểm xã hội một lần
           </Link>
           </Typography>
         </div>
       </PopoverContent>
     </Popover>
+  );
+}
+
+function googleButtons() {
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <Button
+        size="lg"
+        variant="outlined"
+        color="blue-gray"
+        className="flex items-center gap-3"
+        fullWidth={true}
+        style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}
+      >
+        <img src="https://docs.material-tailwind.com/icons/google.svg" alt="metamask" className="h-6 w-6" />
+        Continue with Google
+      </Button>
+    </div>
+  );
+}
+
+function DialogWithForm() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen((cur) => !cur);
+ 
+  return (
+    <>
+      <Button onClick={handleOpen}>Sign In</Button>
+      <Dialog
+            size="xs"
+            open={open}
+            handler={handleOpen}
+            className="bg-transparent shadow-none"
+          >
+            <Card className="mx-auto w-full max-w-[24rem]" >
+              <CardBody className="flex flex-col gap-4">
+                <Typography variant="h4" color="blue-gray">
+                  Sign In
+                </Typography>
+                <Typography
+                  className="mb-3 font-normal"
+                  variant="paragraph"
+                  color="gray"
+                >
+                  Enter your email and password to Sign In.
+                </Typography>
+                <Typography className="-mb-2" variant="h6">
+                  Your Email
+                </Typography>
+                <Input label="Email" size="lg" />
+                <Typography className="-mb-2" variant="h6">
+                  Your Password
+                </Typography>
+                <Input label="Password" size="lg" />
+                <div className="-ml-2.5 -mt-3">
+                  <Checkbox label="Remember Me" />
+                </div>
+              </CardBody>
+              <CardFooter className="pt-0">
+                <Button variant="gradient" onClick={handleOpen} fullWidth>
+                  Sign In
+                </Button>
+                {googleButtons()}
+                <Typography variant="small" className="mt-4 flex justify-center">
+                  Don&apos;t have an account?
+                  <Typography
+                    as="a"
+                    href="#signup"
+                    variant="small"
+                    color="blue-gray"
+                    className="ml-1 font-bold"
+                    onClick={handleOpen}
+                  >
+                    Sign up
+                  </Typography>
+                </Typography>
+              </CardFooter>
+            </Card>
+      </Dialog>
+    </>
   );
 }
  
@@ -186,6 +266,14 @@ function NavList() {
         <Link to={'/tools'} className="flex items-center hover:text-blue-500 transition-colors">
           {PopoverWithDescriptionTools()}
         </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+          {DialogWithForm()}
       </Typography>
     </ul>
   );

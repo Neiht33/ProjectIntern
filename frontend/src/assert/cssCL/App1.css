@@ -4225,11 +4225,6 @@ a.btn {
     color: #1b1e21
 }
 
-.grid {
-    display: flex;
-    justify-content: space-between
-}
-
 .grid__content {
     flex-grow: 1
 }

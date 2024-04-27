@@ -4184,11 +4184,6 @@ a.btn {
     color: #1b1e21
 }
 
-.grid {
-    display: flex;
-    justify-content: space-between
-}
-
 .grid__content {
     flex-grow: 1
 }
@@ -6207,10 +6202,6 @@ angle-up .fa-gamepad:before {
 
 .pl30 {
     padding-left: 30px !important
-}
-
-.w-5 {
-    width: 5%
 }
 
 .w-10 {

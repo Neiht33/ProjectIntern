@@ -51,13 +51,13 @@ function StoreCoverLetter () {
 
     }
 
-    function copyHTML(id) {
+    async function copyHTML(id) {
         const htmlFake = document.querySelector('#fakeHTML')
         var newDiv = document.createElement('div');
         newDiv.id = `App${data[id].idForm}`; 
         newDiv.innerHTML = data[id].htmlBody
         htmlFake.appendChild(newDiv)
-        saveAsPDF();
+        saveAsPDF();     
         setTimeout(() => {
             htmlFake.innerHTML = ''
         },2000)

@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import './Them2.css'
 
 function Them2({getData, data}) {
