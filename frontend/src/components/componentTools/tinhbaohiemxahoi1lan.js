@@ -57,49 +57,6 @@ export default function Tinhbaohiemxahoi1lan() {
         }
         return ketQua;
     }
-    // function tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
-    //     var soNam = namKetThuc - namBatDau;
-    //     var soThang = (thangKetThuc - thangBatDau) + 1;
-
-    //     if (soThang < 0) {
-    //         soNam--;
-    //         soThang += 12;
-    //     }
-
-    //     return { soNam: soNam, soThang: soThang };
-    // }
-
-    // function tinhSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
-    //     var ketQua = [];
-
-    //     while (namBatDau < namKetThuc || (namBatDau === namKetThuc && thangBatDau <= thangKetThuc)) {
-    //         var thang = thangBatDau;
-    //         var nam = namBatDau;
-
-    //         var thangKetThucCuaNamHienTai = (nam === namKetThuc) ? thangKetThuc : 12;
-
-    //         if (thangBatDau === 0) {
-    //             thang = 1;
-    //         }
-
-    //         if (namBatDau === namKetThuc && thangKetThucCuaNamHienTai === thang) {
-    //             // if (thang === 12) { // Nếu là 12 tháng, và cả hai năm giống nhau
-    //             //     // Chuyển đổi thành 3 năm
-    //             //     namKetThuc++;
-    //             //     thangKetThuc = 0; // Reset tháng
-    //             // } else {
-    //             ketQua.push({ thangBatDau: thang, namBatDau: nam, thangKetThuc: thangKetThuc, namKetThuc: namKetThuc });
-    //             break;
-    //         }
-
-    //         ketQua.push({ thangBatDau: thang, namBatDau: nam, thangKetThuc: thangKetThucCuaNamHienTai, namKetThuc: nam });
-
-    //         thangBatDau = 1;
-    //         namBatDau++;
-    //     }
-
-    //     return ketQua;
-    // }
 
     // Sử dụng hàm
     let tong = 0;
@@ -111,7 +68,7 @@ export default function Tinhbaohiemxahoi1lan() {
         var thangKetThuc = parseInt(document.getElementById("thangKetThuc").value);
         var namKetThuc = parseInt(document.getElementById("namKetThuc").value);
         var ketQua = tinhSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
-
+        console.log(ketQua)
         ketQua.forEach(function (item) {
             let thang = (item.thangKetThuc - item.thangBatDau) + 1;
             tongthang += thang;
@@ -122,8 +79,6 @@ export default function Tinhbaohiemxahoi1lan() {
                 2011: 1.54, 2012: 1.41, 2013: 1.33, 2014: 1.27, 2015: 1.27, 2016: 1.23,
                 2017: 1.19, 2018: 1.15, 2019: 1.12, 2020: 1.08, 2021: 1.07, 2022: 1.03, 2023: 1, 2024: 1
             };
-
-            // Kiểm tra xem có hệ số nào phù hợp với giá trị item.namKetThuc không
             if (heSo.hasOwnProperty(item.namKetThuc)) {
                 tong += formData.Wage * thang * heSo[item.namKetThuc];
             } else {
@@ -139,15 +94,10 @@ export default function Tinhbaohiemxahoi1lan() {
         let totalonemore = TinhKetQuaBHXH(TBBHXH, thangBatDau, namBatDau, thangKetThuc, namKetThuc);
         // let totalSupport = support(namBatDau, thangBatDau, thangKetThuc, namKetThuc);
         // console.log(totalSupport);
-        console.log(totalonemore);
+        console.log(totalonemore.toFixed(0));
         // let totalSupport1 = totalonemore - totalSupport;
         // console.log(totalSupport1)
-
-
-
-
     }
-    // Hàm xử lý sự kiện thay đổi trên các select
     function tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
         var soNam = namKetThuc - namBatDau;
         var soThang = (thangKetThuc - thangBatDau) + 1;
@@ -156,27 +106,64 @@ export default function Tinhbaohiemxahoi1lan() {
             soNam--;
             soThang += 12;
         }
+        if (soThang >= 12) {
+            soNam += Math.floor(soThang / 12);
+            soThang = soThang % 12;
+        }
 
         return { soNam: soNam, soThang: soThang };
     }
+
+
+
     function TinhKetQuaBHXH(TBBHXH, thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
-        if (namBatDau < 2014 && namKetThuc > 2014) {
-            const giatritruoc2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, 12, 2013);
-            const giatrisau2014 = tinhTongSoNamVaThang(1, 2014, thangKetThuc, namKetThuc)
-            console.log(giatrisau2014);
-            console.log(giatritruoc2014);
-            if (giatrisau2014.soThang > 7) {
-                giatrisau2014.soNam = giatrisau2014.soNam + 1 + 1;
-            } else {
-                giatrisau2014.soNam = giatrisau2014.soNam + 1 + 0.5;
+        let ketquaSoletruoc2014 = 0;
+        if (namBatDau < 2014 && namKetThuc >= 2014) {
+            var ketQua = { truoc2014: { soNam: 0, soThang: 0 }, sau2014: { soNam: 0, soThang: 0 } };
+            if (namBatDau < 2014) {
+                ketQua.truoc2014.soNam = 2014 - namBatDau - 1; // Trừ 1 năm vì năm 2014 không được tính
+                ketQua.truoc2014.soThang = 12 - thangBatDau + 1; // Số tháng còn lại từ tháng bắt đầu đến cuối năm
             }
-            if (giatritruoc2014.soThang > 7) {
-                giatritruoc2014.soNam = giatritruoc2014.soNam - 1 + 1;
-            } else {
-                giatritruoc2014.soNam = giatritruoc2014.soNam - 1 + 0.5;
+            // Tính số năm và số tháng sau năm 2014
+            if (namKetThuc >= 2014) {
+                ketQua.sau2014.soNam = namKetThuc - 2014; // Số năm từ năm 2014 đến năm kết thúc
+                ketQua.sau2014.soThang = thangKetThuc; // Số tháng đến tháng kết thúc trong năm kết thúc
             }
-            let ketQua = (1.5 * TBBHXH * giatritruoc2014.soNam) + (2 * TBBHXH * giatrisau2014.soNam);
-            return ketQua;
+            // console.log(ketQua.truoc2014.soThang);
+            // console.log(ketQua.sau2014.soThang);
+
+            if (ketQua.truoc2014.soThang > 7) {
+                ketQua.truoc2014.soNam = ketQua.truoc2014.soNam;
+            } else {
+                ketQua.truoc2014.soNam = ketQua.truoc2014.soNam;
+            }
+            let giatritruoc = (1.5 * TBBHXH * ketQua.truoc2014.soNam)
+            // console.log(ketQua.truoc2014.soNam);
+            // console.log(giatritruoc)
+            if (ketQua.sau2014.soThang > 7) {
+                ketQua.sau2014.soNam = ketQua.sau2014.soNam + 1;
+            } else {
+                ketQua.sau2014.soNam = ketQua.sau2014.soNam + 0.5;
+            }
+            if (ketQua.truoc2014.soThang >= 0 && ketQua.truoc2014.soThang <= 12) {
+                // console.log(ketQua.truoc2014.soThang);
+                let thangcuoicung = 12 - ketQua.truoc2014.soThang + 1;
+                // console.log(thangcuoicung);
+                // console.log(TBBHXH);
+                if (thangcuoicung >= 7) {
+                    ketquaSoletruoc2014 = TBBHXH * 2 * 0.5;
+
+                } else if (thangcuoicung < 7) {
+                    ketquaSoletruoc2014 = TBBHXH * 2 * 1;
+                }
+            }
+
+            // console.log(ketquaSoletruoc2014);
+            let giatrisau = (2 * TBBHXH * ketQua.sau2014.soNam) + ketquaSoletruoc2014;
+            // console.log(ketQua.sau2014.soNam);
+            // console.log(giatrisau);
+            let ketQua1 = giatrisau + giatritruoc;
+            return ketQua1;
         } else if (namBatDau < 2014) {
             const giatritruoc2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
             console.log(giatritruoc2014);
@@ -198,7 +185,6 @@ export default function Tinhbaohiemxahoi1lan() {
                 let ketQua2 = mucHuongTruoc2014 + mucHuongSau2014khong;
                 return ketQua2;
             }
-
         } else if (namBatDau >= 2014) {
             const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc)
             console.log(giatrisau2014);
@@ -211,76 +197,6 @@ export default function Tinhbaohiemxahoi1lan() {
             return ketQua3;
         }
     }
-    // function support(namBatDau, thangBatDau, thangKetThuc, namKetThuc) {
-    //     let ketqua4 = 0;
-    //     let ketqua5 = 0;
-    //     let ketqua6 = 0;
-
-
-    //     if (namBatDau >= 2008 && namKetThuc <= 2024) {
-    //         if (namBatDau >= 2022 && namKetThuc <= 2024) {
-    //             const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
-    //             giatrisau2014.soNam = giatrisau2014.soNam * 12 + giatrisau2014.soThang;
-    //             console.log(giatrisau2014.soNam)
-    //             ketqua5 = 0.22 * 1500000 * 0.1 * giatrisau2014.soNam;
-    //             console.log(ketqua5)
-    //         }
-    //         if (namBatDau >= 2018 && namKetThuc <= 2021) {
-    //             const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
-    //             giatrisau2014.soNam = giatrisau2014.soNam * 12 + giatrisau2014.soThang;
-    //             console.log(giatrisau2014.soNam)
-    //             ketqua6 = 0.22 * 700000 * 0.1 * giatrisau2014.soNam;
-    //             console.log(ketqua6)
-    //         }
-    //         ketqua4 = ketqua6 + ketqua5;
-    //     }
-    //     let Sumtotal = ketqua5 + ketqua6;
-    //     return Sumtotal;
-    // }
-
-    // function support(namBatDau, thangBatDau, thangKetThuc, namKetThuc) {
-    //     let ketqua4 = 0;
-    //     let ketqua5 = 0;
-    //     let ketqua6 = 0;
-    //     if (namBatDau >= 2022 && namKetThuc <= 2024) {
-    //         const giatrisau2014 = tinhTongSoNamVaThang(1, 2022, thangKetThuc, namKetThuc)
-    //         giatrisau2014.soNam = giatrisau2014.soNam * 12 + giatrisau2014.soThang
-    //         console.log(giatrisau2014.soNam);
-    //         ketqua5 = 0.22 * 1500000 * 0.1 * giatrisau2014.soNam;
-    //         console.log(ketqua5);
-    //     }
-    //     if (namKetThuc >= 2018 && namKetThuc <= 2021) {
-    //         const giatrisau2014 = tinhTongSoNamVaThang(1, 2018, thangKetThuc, namKetThuc)
-    //         giatrisau2014.soNam = giatrisau2014.soNam * 12 + giatrisau2014.soThang
-    //         console.log(giatrisau2014.soNam);
-    //         ketqua6 = 0.22 * 700000 * 0.1 * giatrisau2014.soNam;
-    //         console.log(ketqua6);
-    //     }
-    //     if ((namBatDau >= 2008 && namKetThuc <= 2024)) {
-    //         const giatrisau2022 = tinhTongSoNamVaThang(1, 2022, thangKetThuc, namKetThuc)
-    //         giatrisau2022.soNam = giatrisau2022.soNam * 12 + giatrisau2022.soThang
-    //         console.log(giatrisau2022.soNam)
-    //         ketqua5 = 0.22 * 1500000 * 0.1 * giatrisau2022.soNam;
-    //         console.log(Number(ketqua5))
-    //         const giatrisau2018 = tinhTongSoNamVaThang(1, 2018, thangKetThuc, namKetThuc)
-    //         giatrisau2018.soNam = giatrisau2018.soNam * 12 + giatrisau2018.soThang
-    //         console.log(giatrisau2018.soNam);
-    //         ketqua6 = 0.22 * 700000 * 0.1 * giatrisau2018.soNam;
-    //         console.log(Number(ketqua6))
-    //         ketqua4 = Number(ketqua6) + Number(ketqua5);
-    //     }
-    //     let Sumtotal = ketqua4 + ketqua5 + ketqua6;
-    //     return Sumtotal
-    // }
-
-
-
-
-
-
-
-
-
 
 
     return (

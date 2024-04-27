@@ -41,35 +41,6 @@ export default function Thatnghiep() {
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
     };
-    ///lương đóng bảo hiểm không thay đổi trong 6 tháng
-    // useEffect(() => {
-    //     let callradio2 = document.querySelector(".chedo")
-    //     let callradio3 = document.querySelector(".chedothay")
-    //     if (callradio2.checked) {
-    //         let totalAmountyear = calculateTotalAmount(formData.p);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyear)
-    //     } else if (callradio3.checked) {
-    //         let totalAmountyeararea5 = calculateTotalAmountArea5(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea5)
-    //     }
-    // },)
-    // useEffect(() => {
-    //     let callradio = document.querySelector(".chedo")
-    //     let callradiosalary1 = document.querySelector(".private")
-    //     if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
-    //         let totalAmountyeararea1 = calculateTotalAmountArea1(formData.p);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea1)
-    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung2") {
-    //         let totalAmountyeararea2 = calculateTotalAmountArea2(formData.p);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea2)
-    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung3") {
-    //         let totalAmountyeararea3 = calculateTotalAmountArea3(formData.p);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea3)
-    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung4") {
-    //         let totalAmountyeararea4 = calculateTotalAmountArea4(formData.p);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea4)
-    //     }
-    // },)
 
     function calculateTotalAmount(principal) {
         let BaseSalary = 1800000; //02
@@ -145,29 +116,6 @@ export default function Thatnghiep() {
             return MonthlyAllowance;
         }
     }
-    /// lương đóng bảo hiểm thay đổi trong 6 tháng
-    // useEffect(() => {
-    //     let callradio = document.querySelector(".chedothay")
-    //     let callradiosalary1 = document.querySelector(".private")
-    //     if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
-    //         let totalAmountyeararea6 = calculateTotalAmountArea6(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea6)
-    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung2") {
-    //         let totalAmountyeararea7 = calculateTotalAmountArea7(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea7)
-    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung3") {
-    //         let totalAmountyeararea8 = calculateTotalAmountArea8(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea8)
-    //     } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung4") {
-    //         let totalAmountyeararea9 = calculateTotalAmountArea9(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-    //         console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyeararea9)
-    //     }
-    // },)
-    //
-
-
-
-
 
     function calculateTotalAmountArea5(principal1, principal2, principal3, principal4, principal5, principal6) {
         let medium = (Number(principal1) + Number(principal2) + Number(principal3) + Number(principal4) + Number(principal5) + Number(principal6)) / 6
@@ -187,7 +135,6 @@ export default function Thatnghiep() {
     }
     function calculateTotalAmountArea6(principal1, principal2, principal3, principal4, principal5, principal6) {
         let medium = (Number(principal1) + Number(principal2) + Number(principal3) + Number(principal4) + Number(principal5) + Number(principal6)) / 6;
-        console.log(medium)
 
         let BaseSalary = 4680000; //02
         let MonthlySalary = 20 * BaseSalary; //03
@@ -205,7 +152,7 @@ export default function Thatnghiep() {
     }
     function calculateTotalAmountArea7(principal1, principal2, principal3, principal4, principal5, principal6) {
         let medium = (Number(principal1) + Number(principal2) + Number(principal3) + Number(principal4) + Number(principal5) + Number(principal6)) / 6;
-        console.log(medium)
+
 
         let BaseSalary = 4160000; //02
         let MonthlySalary = 20 * BaseSalary; //03
@@ -223,7 +170,7 @@ export default function Thatnghiep() {
     }
     function calculateTotalAmountArea8(principal1, principal2, principal3, principal4, principal5, principal6) {
         let medium = (Number(principal1) + Number(principal2) + Number(principal3) + Number(principal4) + Number(principal5) + Number(principal6)) / 6;
-        console.log(medium)
+
 
         let BaseSalary = 3640000; //02
         let MonthlySalary = 20 * BaseSalary; //03
@@ -241,7 +188,7 @@ export default function Thatnghiep() {
     }
     function calculateTotalAmountArea9(principal1, principal2, principal3, principal4, principal5, principal6) {
         let medium = (Number(principal1) + Number(principal2) + Number(principal3) + Number(principal4) + Number(principal5) + Number(principal6)) / 6;
-        console.log(medium)
+
         let BaseSalary = 3250000; //02
         let MonthlySalary = 20 * BaseSalary; //03
         let apply = MonthlySalary;//04
@@ -263,6 +210,15 @@ export default function Thatnghiep() {
         let callradiosalary2 = document.querySelector(".private")
         let callradio2 = document.querySelector(".chedo")
         let callradio3 = document.querySelector(".chedothay")
+        if (callradio2.checked) {
+            let calculatedTotal = calculateTotalAmount(formData.p);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal);
+        } else if (callradio3.checked) {
+            let calculatedTotal = calculateTotalAmountArea5(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
+            setTotal(calculatedTotal)
+        }
         if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
             let calculatedTotal = calculateTotalAmountArea1(formData.p);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
@@ -297,15 +253,6 @@ export default function Thatnghiep() {
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
             setTotal(calculatedTotal);
         }
-        if (callradio2.checked) {
-            let calculatedTotal = calculateTotalAmount(formData.p);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
-        } else if (callradio3.checked) {
-            let calculatedTotal = calculateTotalAmountArea5(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
-            console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal)
-        }
         if (formData.n < 12) {
             setInherit("không đươc hưởng BHTN")
         } else if (formData.n >= 12 && formData.n <= 36) {
@@ -317,9 +264,6 @@ export default function Thatnghiep() {
 
         }
     }
-    ///thời gian được hưởng bảo hiểm thất nghiệp 
-    // function inheritunemployment()
-
 
     return (
         <>
