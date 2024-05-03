@@ -5,10 +5,10 @@ export default function Tinhbaohiemxahoi1lan() {
         Wage: '',
         giatri: ''
     });
-    // const [total, setTotal] = useState(0);
-    // const formatter = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' });
-    // const formattedAmount = formatter.format(total);
-    // console.log(formattedAmount);
+    const [total, setTotal] = useState(0);
+    const formatter = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' });
+    const formattedAmount = formatter.format(total);
+    console.log(formattedAmount);
     // const [total, setTotal] = useState("");
 
     const handleChange = (event) => {
@@ -38,22 +38,31 @@ export default function Tinhbaohiemxahoi1lan() {
 
     function tinhSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
         var ketQua = [];
-        while (namBatDau < namKetThuc || (namBatDau === namKetThuc && thangBatDau <= thangKetThuc)) {
-            var thangKetThucCuaNamHienTai = (namBatDau === namKetThuc) ? thangKetThuc : 12;
-            var soNam = namKetThuc - namBatDau;
-            var soThang = thangKetThucCuaNamHienTai - thangBatDau + 1;
 
-            if (soThang < 0) {
-                soNam--;
-                soThang += 12;
+        while (namBatDau < namKetThuc || (namBatDau === namKetThuc && thangBatDau <= thangKetThuc)) {
+            var thang = thangBatDau;
+            var nam = namBatDau;
+
+            var thangKetThucCuaNamHienTai = (nam === namKetThuc) ? thangKetThuc : 12;
+
+            if (thangBatDau === 0) {
+                thang = 1;
             }
 
-            ketQua.push({ thangBatDau: thangBatDau, namBatDau: namBatDau, thangKetThuc: thangKetThucCuaNamHienTai, namKetThuc: namBatDau + soNam });
+            if (namBatDau === namKetThuc && thangKetThucCuaNamHienTai === thang) {
+                ketQua.push({ thangBatDau: thang, namBatDau: nam, thangKetThuc: thangKetThuc, namKetThuc: namKetThuc });
+                break;
+            }
+
+            ketQua.push({ thangBatDau: thang, namBatDau: nam, thangKetThuc: thangKetThucCuaNamHienTai, namKetThuc: nam });
+
             thangBatDau = 1;
             namBatDau++;
         }
+
         return ketQua;
     }
+<<<<<<< HEAD
 
     // Hàm tính số năm và số tháng
     function tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
@@ -67,6 +76,8 @@ export default function Tinhbaohiemxahoi1lan() {
         return { soNam: soNam, soThang: soThang };
     }
 
+=======
+>>>>>>> 18259497d54f90740321059f7368c06d4266e2a9
     // Sử dụng hàm
     let tong = 0;
     let tongthang = 0;
@@ -76,7 +87,7 @@ export default function Tinhbaohiemxahoi1lan() {
         var thangKetThuc = parseInt(document.getElementById("thangKetThuc").value);
         var namKetThuc = parseInt(document.getElementById("namKetThuc").value);
         var ketQua = tinhSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
-        console.log(ketQua)
+
         ketQua.forEach(function (item) {
             let thang = (item.thangKetThuc - item.thangBatDau) + 1;
             tongthang += thang;
@@ -87,6 +98,8 @@ export default function Tinhbaohiemxahoi1lan() {
                 2011: 1.54, 2012: 1.41, 2013: 1.33, 2014: 1.27, 2015: 1.27, 2016: 1.23,
                 2017: 1.19, 2018: 1.15, 2019: 1.12, 2020: 1.08, 2021: 1.07, 2022: 1.03, 2023: 1, 2024: 1
             };
+
+            // Kiểm tra xem có hệ số nào phù hợp với giá trị item.namKetThuc không
             if (heSo.hasOwnProperty(item.namKetThuc)) {
                 tong += formData.Wage * thang * heSo[item.namKetThuc];
             } else {
@@ -95,16 +108,22 @@ export default function Tinhbaohiemxahoi1lan() {
             }
 
         });
-
+        console.log(tong)
         let TBBHXH = tong / tongthang
+        console.log(TBBHXH.toFixed(0));
         console.log(ketQua);
+<<<<<<< HEAD
+=======
+        console.log(tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc))
+>>>>>>> 18259497d54f90740321059f7368c06d4266e2a9
         let totalonemore = TinhKetQuaBHXH(TBBHXH, thangBatDau, namBatDau, thangKetThuc, namKetThuc);
         // let totalSupport = support(namBatDau, thangBatDau, thangKetThuc, namKetThuc);
         // console.log(totalSupport);
-        console.log(totalonemore.toFixed(0));
+        setTotal(totalonemore.toFixed(0));
         // let totalSupport1 = totalonemore - totalSupport;
         // console.log(totalSupport1)
     }
+    // Hàm xử lý sự kiện thay đổi trên các select
     function tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
         var soNam = namKetThuc - namBatDau;
         var soThang = (thangKetThuc - thangBatDau) + 1;
@@ -120,10 +139,8 @@ export default function Tinhbaohiemxahoi1lan() {
 
         return { soNam: soNam, soThang: soThang };
     }
-
-
-
     function TinhKetQuaBHXH(TBBHXH, thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
+<<<<<<< HEAD
         let ketquaSoletruoc2014 = 0;
         if (namBatDau < 2014 && namKetThuc >= 2014) {
             var ketQua = { truoc2014: { soNam: 0, soThang: 0 }, sau2014: { soNam: 0, soThang: 0 } };
@@ -234,11 +251,175 @@ export default function Tinhbaohiemxahoi1lan() {
             }
 
             ketQua = (2 * TBBHXH * giatrisau2014.soNam);
+=======
+        if (thangBatDau >= thangKetThuc) {
+            console.log("Tháng bắt đầu phải nhỏ hơn tháng kết thúc.");
+            return 0;
+>>>>>>> 18259497d54f90740321059f7368c06d4266e2a9
         }
+        else {
+            let ketquaSoletruoc2014 = 0;
+            if (namBatDau < 2014 && namKetThuc >= 2014) {
+                var ketQua = { truoc2014: { soNam: 0, soThang: 0 }, sau2014: { soNam: 0, soThang: 0 } };
+                if (namBatDau < 2014) {
+                    ketQua.truoc2014.soNam = 2014 - namBatDau - 1; // Trừ 1 năm vì năm 2014 không được tính
+                    ketQua.truoc2014.soThang = 12 - thangBatDau + 1; // Số tháng còn lại từ tháng bắt đầu đến cuối năm
+                }
+                // Tính số năm và số tháng sau năm 2014
+                if (namKetThuc >= 2014) {
+                    ketQua.sau2014.soNam = namKetThuc - 2014; // Số năm từ năm 2014 đến năm kết thúc
+                    ketQua.sau2014.soThang = thangKetThuc; // Số tháng đến tháng kết thúc trong năm kết thúc
+                }
+                // console.log(ketQua.truoc2014.soThang);
+                // console.log(ketQua.sau2014.soThang);
 
-        return ketQua1 + ketQua2 + ketQua;
+                // if (ketQua.truoc2014.soThang > 7) {
+                //     ketQua.truoc2014.soNam = ketQua.truoc2014.soNam + 0;
+                // } else {
+                //     ketQua.truoc2014.soNam = ketQua.truoc2014.soNam + 0;
+                // }
+                let giatritruoc = (1.5 * TBBHXH * ketQua.truoc2014.soNam)
+                console.log(ketQua.truoc2014.soNam);
+                console.log(giatritruoc)
+                console.log(ketQua.sau2014.soThang)
+                // let thangcuoicung2 = 12 - ketQua.sau2014.soThang + 1;
+                // console.log(thangcuoicung2)
+                if (ketQua.sau2014.soThang > 7) {
+                    ketQua.sau2014.soNam = ketQua.sau2014.soNam + 1;
+                } else {
+                    ketQua.sau2014.soNam = ketQua.sau2014.soNam + 0.5;
+                }
+                console.log(ketQua.sau2014.soNam)
+                if (ketQua.truoc2014.soThang >= 0 && ketQua.truoc2014.soThang <= 12) {
+                    console.log(ketQua.truoc2014.soThang);
+                    // let thangcuoicung = 12 - ketQua.truoc2014.soThang + 1;
+                    // console.log(thangcuoicung);
+                    if (ketQua.truoc2014.soThang > 7 && ketQua.truoc2014.soThang < 12) {
+                        ketquaSoletruoc2014 = TBBHXH * 2 * 1;
+
+                    } else if (ketQua.truoc2014.soThang <= 7) {
+                        ketquaSoletruoc2014 = TBBHXH * 2 * 0.5;
+                    } else if (ketQua.truoc2014.soThang === 12) {
+                        ketquaSoletruoc2014 = TBBHXH * 1.5 * 1
+                    }
+                }
+
+                console.log(ketquaSoletruoc2014);
+                let giatrisau = (2 * TBBHXH * ketQua.sau2014.soNam) + ketquaSoletruoc2014;
+                console.log(2 * TBBHXH * ketQua.sau2014.soNam)
+                console.log(ketQua.sau2014.soNam);
+                console.log(giatrisau);
+                let ketQua1 = giatrisau + giatritruoc;
+                return ketQua1;
+            } else if (namBatDau < 2014) {
+                const giatritruoc2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
+                console.log(giatritruoc2014);
+                if (giatritruoc2014.soThang >= 7) {
+                    giatritruoc2014.soThang = 1;
+                } else {
+                    giatritruoc2014.soThang = 0.5;
+                }
+                // Tính mức hưởng BHXH một lần trước năm 2014
+                let mucHuongTruoc2014 = 1.5 * TBBHXH * giatritruoc2014.soNam;
+
+                if (giatritruoc2014.soThang === 1) {
+                    let mucHuongSau2014nguyen = 2 * TBBHXH * 1;
+                    let ketQua2 = mucHuongTruoc2014 + mucHuongSau2014nguyen;
+                    return ketQua2;
+
+                } else if (giatritruoc2014.soThang === 0.5) {
+                    let mucHuongSau2014khong = 2 * TBBHXH * 0.5;
+                    let ketQua4 = mucHuongTruoc2014 + mucHuongSau2014khong;
+                    return ketQua4;
+                }
+
+            } else if (namBatDau >= 2014) {
+                const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc)
+                console.log(giatrisau2014);
+                if (giatrisau2014.soThang > 7) {
+                    giatrisau2014.soNam = giatrisau2014.soNam + 1;
+                } else {
+                    giatrisau2014.soNam = giatrisau2014.soNam + 0.5;
+                }
+                let ketQua1 = (2 * TBBHXH * giatrisau2014.soNam);
+                return ketQua1;
+            }
+
+        }
     }
+<<<<<<< HEAD
 }
+=======
+    // function support(namBatDau, thangBatDau, thangKetThuc, namKetThuc) {
+    //     let ketqua4 = 0;
+    //     let ketqua5 = 0;
+    //     let ketqua6 = 0;
+
+
+    //     if (namBatDau >= 2008 && namKetThuc <= 2024) {
+    //         if (namBatDau >= 2022 && namKetThuc <= 2024) {
+    //             const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
+    //             giatrisau2014.soNam = giatrisau2014.soNam * 12 + giatrisau2014.soThang;
+    //             console.log(giatrisau2014.soNam)
+    //             ketqua5 = 0.22 * 1500000 * 0.1 * giatrisau2014.soNam;
+    //             console.log(ketqua5)
+    //         }
+    //         if (namBatDau >= 2018 && namKetThuc <= 2021) {
+    //             const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc);
+    //             giatrisau2014.soNam = giatrisau2014.soNam * 12 + giatrisau2014.soThang;
+    //             console.log(giatrisau2014.soNam)
+    //             ketqua6 = 0.22 * 700000 * 0.1 * giatrisau2014.soNam;
+    //             console.log(ketqua6)
+    //         }
+    //         ketqua4 = ketqua6 + ketqua5;
+    //     }
+    //     let Sumtotal = ketqua5 + ketqua6;
+    //     return Sumtotal;
+    // }
+
+    // function support(namBatDau, thangBatDau, thangKetThuc, namKetThuc) {
+    //     let ketqua4 = 0;
+    //     let ketqua5 = 0;
+    //     let ketqua6 = 0;
+    //     if (namBatDau >= 2022 && namKetThuc <= 2024) {
+    //         const giatrisau2014 = tinhTongSoNamVaThang(1, 2022, thangKetThuc, namKetThuc)
+    //         giatrisau2014.soNam = giatrisau2014.soNam * 12 + giatrisau2014.soThang
+    //         console.log(giatrisau2014.soNam);
+    //         ketqua5 = 0.22 * 1500000 * 0.1 * giatrisau2014.soNam;
+    //         console.log(ketqua5);
+    //     }
+    //     if (namKetThuc >= 2018 && namKetThuc <= 2021) {
+    //         const giatrisau2014 = tinhTongSoNamVaThang(1, 2018, thangKetThuc, namKetThuc)
+    //         giatrisau2014.soNam = giatrisau2014.soNam * 12 + giatrisau2014.soThang
+    //         console.log(giatrisau2014.soNam);
+    //         ketqua6 = 0.22 * 700000 * 0.1 * giatrisau2014.soNam;
+    //         console.log(ketqua6);
+    //     }
+    //     if ((namBatDau >= 2008 && namKetThuc <= 2024)) {
+    //         const giatrisau2022 = tinhTongSoNamVaThang(1, 2022, thangKetThuc, namKetThuc)
+    //         giatrisau2022.soNam = giatrisau2022.soNam * 12 + giatrisau2022.soThang
+    //         console.log(giatrisau2022.soNam)
+    //         ketqua5 = 0.22 * 1500000 * 0.1 * giatrisau2022.soNam;
+    //         console.log(Number(ketqua5))
+    //         const giatrisau2018 = tinhTongSoNamVaThang(1, 2018, thangKetThuc, namKetThuc)
+    //         giatrisau2018.soNam = giatrisau2018.soNam * 12 + giatrisau2018.soThang
+    //         console.log(giatrisau2018.soNam);
+    //         ketqua6 = 0.22 * 700000 * 0.1 * giatrisau2018.soNam;
+    //         console.log(Number(ketqua6))
+    //         ketqua4 = Number(ketqua6) + Number(ketqua5);
+    //     }
+    //     let Sumtotal = ketqua4 + ketqua5 + ketqua6;
+    //     return Sumtotal
+    // }
+
+
+
+
+
+
+
+
+>>>>>>> 18259497d54f90740321059f7368c06d4266e2a9
     return (
         <>
             <form id='paragraph' onSubmit={getFormData}>
@@ -512,6 +693,7 @@ export default function Tinhbaohiemxahoi1lan() {
                                     <option value="1995" >1995</option>
                                     <option value="1994" >1994</option>
                                 </select>
+
                             </div>
                             <div className='element-table'>
                                 <div className='element-table-right'>
@@ -543,9 +725,9 @@ export default function Tinhbaohiemxahoi1lan() {
                 </div>
                 <div id="ketQua"></div>
                 <p></p>
-                {/* <div className='Giatrihienthi'>
-                    <p>Kết quả trong <span id="year-result" class="highlight">{formData.n}  </span>  năm bạn sẽ có <span id="money-result" class="highlight">{formattedAmount}</span> (VNĐ)</p>
-                </div> */}
+                <div className='Giatrihienthi'>
+                    <p>Kết quả {formattedAmount} (VNĐ)</p>
+                </div>
             </form >
 
         </>
