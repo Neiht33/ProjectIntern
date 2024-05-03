@@ -3,8 +3,6 @@ const app = express()
 const path = require('path')
 const cors = require('cors');
 const fs = require('fs');
-// const multer = require('multer');
-// const upload = multer({ dest: './src/public/uploads/' })
 
 const port = 8080
 

@@ -670,13 +670,40 @@ function Themsmain() {
                     >
                       <span>Cỡ chữ</span>
                       <div className="options">
-                        <span className="fontsize small">
+                        <span className="fontsize small" style={{fontSize: '10px'}} onClick={() => {
+                          const editSize = document.getElementById('cvo-body')
+                          editSize.style.fontSize = '13px'
+                          const editActiveSmall = document.querySelector('.fontsize.small')
+                          const editActiveNormal = document.querySelector('.fontsize.normal')
+                          const editActiveLarge = document.querySelector('.fontsize.large')
+                          editActiveSmall.classList.add("active")
+                          editActiveNormal.classList.remove("active")
+                          editActiveLarge.classList.remove("active")
+                        }}>
                           <i className="fa fa-font" data-size="small" />
                         </span>
-                        <span className="fontsize normal active">
+                        <span className="fontsize normal active" style={{fontSize: '14px'}} onClick={() => {
+                          const editSize = document.getElementById('cvo-body')
+                          editSize.style.fontSize = '14px'
+                          const editActiveSmall = document.querySelector('.fontsize.small')
+                          const editActiveNormal = document.querySelector('.fontsize.normal')
+                          const editActiveLarge = document.querySelector('.fontsize.large')
+                          editActiveNormal.classList.add("active")
+                          editActiveSmall.classList.remove("active")
+                          editActiveLarge.classList.remove("active")
+                        }}>
                           <i className="fa fa-font" data-size="normal" />
                         </span>
-                        <span className="fontsize large">
+                        <span className="fontsize large" style={{fontSize: '18px'}} onClick={() => {
+                          const editSize = document.getElementById('cvo-body')
+                          editSize.style.fontSize = '15px'
+                          const editActiveSmall = document.querySelector('.fontsize.small')
+                          const editActiveNormal = document.querySelector('.fontsize.normal')
+                          const editActiveLarge = document.querySelector('.fontsize.large')
+                          editActiveLarge.classList.add("active")
+                          editActiveSmall.classList.remove("active")
+                          editActiveNormal.classList.remove("active")
+                        }}>
                           <i className="fa fa-font" data-size="large" />
                         </span>
                       </div>
@@ -688,13 +715,13 @@ function Themsmain() {
                     >
                       <span>Dãn dòng</span>
                       <div className="options">
-                        <span className="line-height small">
+                        <span className="line-height small" style={{fontSize: '10px'}}>
                           <i className="fa fa-arrows-v" data-spacing="small" />
                         </span>
                         <span className="line-height normal active">
                           <i className="fa fa-arrows-v" data-spacing="normal" />
                         </span>
-                        <span className="line-height large">
+                        <span className="line-height large" style={{fontSize: '18px'}}>
                           <i className="fa fa-arrows-v" data-spacing="large" />
                         </span>
                       </div>

@@ -4702,7 +4702,8 @@ angle-up .fa-gamepad:before {
 .header_editor .item-list-spacing .options .fontsize:hover,
 .header_editor .item-list-spacing .options .line-height.active,
 .header_editor .item-list-spacing .options .line-height:hover {
-    background-color: #666
+    background-color: #666;
+    color: #fff;
 }
 
 .header_editor .item-list-spacing .options .fontsize.active i,

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, Route, Routes  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import jsPDF from 'jspdf';
 import axios from 'axios';
 import html2PDF from 'jspdf-html2canvas';
 import { format } from 'date-fns-tz';
@@ -9,6 +10,7 @@ function StoreCoverLetter () {
 
     const [data, setData] = useState([])
     const componentRef = useRef(null);
+    const [imageSrc, setImageSrc] = useState('');
 
     useEffect(() => {
         getData()
@@ -57,12 +59,12 @@ function StoreCoverLetter () {
         newDiv.id = `App${data[id].idForm}`; 
         newDiv.innerHTML = data[id].htmlBody
         htmlFake.appendChild(newDiv)
-        saveAsPDF();     
+
+        saveAsPDF();
         setTimeout(() => {
             htmlFake.innerHTML = ''
         },2000)
     }
-
     function saveAsPDF(){
         html2PDF(componentRef.current, {
           jsPDF: {
@@ -119,11 +121,12 @@ function StoreCoverLetter () {
                                         <ul className="cv-action text-dark-gray">
                                             <li>
                                                 <Link to={`/Cover-Letter-list/Preview/${item.id}`} target="_blank" className="btn btn-sm btn-not-radius">
-                                                    <i className="fa fa-eye"></i> Xem
+                                                    <i className="fa fa-eye"></i> 
+                                                    Xem
                                                 </Link>
                                             </li>
                                             <li>
-                                                <a className="btn btn-sm btn-not-radius btn-download-cover-letter" onClick={() => copyHTML(index)}>
+                                                <a className="btn btn-sm btn-not-radius btn-download-cover-letter" onClick={() => {copyHTML(index)}}>
                                                     <i className="fa fa-download"></i>
                                                     Tải xuống
                                                 </a>

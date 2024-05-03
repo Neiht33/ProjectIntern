@@ -54,8 +54,6 @@ export default function Tinhbaohiemxahoi1lan() {
         }
         return ketQua;
     }
-<<<<<<< HEAD
-=======
 
     // Hàm tính số năm và số tháng
     function tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc) {
@@ -68,8 +66,6 @@ export default function Tinhbaohiemxahoi1lan() {
         }
         return { soNam: soNam, soThang: soThang };
     }
-
->>>>>>> a6b925159cd1d26cea5a6b957215e97a06d70112
 
     // Sử dụng hàm
     let tong = 0;
@@ -102,7 +98,6 @@ export default function Tinhbaohiemxahoi1lan() {
 
         let TBBHXH = tong / tongthang
         console.log(ketQua);
-<<<<<<< HEAD
         let totalonemore = TinhKetQuaBHXH(TBBHXH, thangBatDau, namBatDau, thangKetThuc, namKetThuc);
         // let totalSupport = support(namBatDau, thangBatDau, thangKetThuc, namKetThuc);
         // console.log(totalSupport);
@@ -200,7 +195,6 @@ export default function Tinhbaohiemxahoi1lan() {
         } else if (namBatDau >= 2014) {
             const giatrisau2014 = tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc)
             console.log(giatrisau2014);
-=======
         console.log(tinhTongSoNamVaThang(thangBatDau, namBatDau, thangKetThuc, namKetThuc))
     }
 
@@ -222,7 +216,6 @@ export default function Tinhbaohiemxahoi1lan() {
                 giatritruoc2014.soNam += 0.5;
             }
 
->>>>>>> a6b925159cd1d26cea5a6b957215e97a06d70112
             if (giatrisau2014.soThang > 7) {
                 giatrisau2014.soNam += 1;
             } else {
@@ -245,8 +238,7 @@ export default function Tinhbaohiemxahoi1lan() {
 
         return ketQua1 + ketQua2 + ketQua;
     }
-
-
+}
     return (
         <>
             <form id='paragraph' onSubmit={getFormData}>
