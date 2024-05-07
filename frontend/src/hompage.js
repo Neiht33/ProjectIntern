@@ -14,7 +14,6 @@ import Header from "./components/componentMBTI/header";
 import Home from './components/componentTools/tinhlai';
 import Lapkehoachtietkiem from './components/componentTools/lapkehoachtietkiem';
 import Thatnghiep from './components/componentTools/thatnghiep';
-import Tinhbaohiemxahoi1lan from './components/componentTools/tinhbaohiemxahoi1lan';
 
  
 function PopoverWithDescriptionCL() {
@@ -338,7 +337,6 @@ export default function NavbarSimple() {
           <Route path='/tools' element={<Home />} />
           <Route path='/tools/tietkiem' element={<Lapkehoachtietkiem />} />
           <Route path='/tools/that-nghiep' element={<Thatnghiep />} />
-          <Route path='/tools/bao-hiem' element={<Tinhbaohiemxahoi1lan />} />
         </Routes>
     </>
   );

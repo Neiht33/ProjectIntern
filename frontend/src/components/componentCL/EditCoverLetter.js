@@ -755,16 +755,43 @@ function EditCoverLetter ({}) {
                             >
                             <span>Dãn dòng</span>
                             <div className="options">
-                                <span className="line-height small">
-                                <i className="fa fa-arrows-v" data-spacing="small" />
-                                </span>
-                                <span className="line-height normal active">
-                                <i className="fa fa-arrows-v" data-spacing="normal" />
-                                </span>
-                                <span className="line-height large">
-                                <i className="fa fa-arrows-v" data-spacing="large" />
-                                </span>
-                            </div>
+                        <span className="line-height small" style={{fontSize: '10px'}} onClick={() => {
+                          const editSize = document.getElementById('cvo-body')
+                          editSize.style.lineHeight = '18px'
+                          const editActiveSmall = document.querySelector('.line-height.small')
+                          const editActiveNormal = document.querySelector('.line-height.normal')
+                          const editActiveLarge = document.querySelector('.line-height.large')
+                          editActiveSmall.classList.add("active")
+                          editActiveNormal.classList.remove("active")
+                          editActiveLarge.classList.remove("active")
+                        }}>
+                          <i className="fa fa-arrows-v" data-spacing="small" />
+                        </span>
+                        <span className="line-height normal active" onClick={() => {
+                          const editSize = document.getElementById('cvo-body')
+                          editSize.style.lineHeight = '1.5'
+                          const editActiveSmall = document.querySelector('.line-height.small')
+                          const editActiveNormal = document.querySelector('.line-height.normal')
+                          const editActiveLarge = document.querySelector('.line-height.large')
+                          editActiveNormal.classList.add("active")
+                          editActiveSmall.classList.remove("active")
+                          editActiveLarge.classList.remove("active")
+                        }}>
+                          <i className="fa fa-arrows-v" data-spacing="normal" />
+                        </span>
+                        <span className="line-height large" style={{fontSize: '18px'}} onClick={() => {
+                          const editSize = document.getElementById('cvo-body')
+                          editSize.style.lineHeight = '24px'
+                          const editActiveSmall = document.querySelector('.line-height.small')
+                          const editActiveNormal = document.querySelector('.line-height.normal')
+                          const editActiveLarge = document.querySelector('.line-height.large')
+                          editActiveLarge.classList.add("active")
+                          editActiveNormal.classList.remove("active")
+                          editActiveSmall.classList.remove("active")
+                        }}>
+                          <i className="fa fa-arrows-v" data-spacing="large" />
+                        </span>
+                      </div>
                             </a>
                             <a
                             href="javascript:void(0)"
