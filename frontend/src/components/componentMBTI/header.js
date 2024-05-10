@@ -16,8 +16,8 @@ export default function Header() {
           <div className='header-home  home-mid' style={{ display: 'flex', flexDirection: 'column' }}>
             <h1>TRẮC NGHIỆM TÍNH CÁCH MBTI</h1>
             <h2 style={{ textAlign: 'center', fontSize: '32px' }}>Khám phá tiềm năng bản thân</h2>
-            <Button type="primary" shape="round" style={{ height: '60px', width: '250px', margin: 'auto', fontSize: '30px', background: '#00b14f' }}>
-              <Link to='/mbti/contest'>Làm bài test</Link>
+            <Button type="primary" shape="round" style={{ height: '60px', width: '250px', margin: 'auto', fontFamily: 'cursive', fontSize: '30px', background: 'radial-gradient(#3d4562, #5c81f1)' }}>
+              <Link className='hihi' to='/mbti/contest'>Làm bài test</Link>
             </Button>
           </div>
           <div className='header-home'>
@@ -26,10 +26,10 @@ export default function Header() {
         </div>
         <Example />
         <div>
-          <h1 style={{ fontSize: '38px', marginTop: '60px', marginBottom: '20px', fontWeight: '700', textAlign: 'center', color: 'blanchedalmond' }}>Hành trình 2 triệu bài test MBTI cùng ThanhPhu</h1>
+          <h1 style={{ fontSize: '38px', marginTop: '60px', marginBottom: '20px', fontWeight: '700', textAlign: 'center', color: 'white' }}>Hành trình 2 triệu bài test MBTI cùng ThanhPhu</h1>
         </div>
         <div>
-          <img src='https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/mbti/2-million-tests/main-desktop.png' />
+          <img src='https://assets.anakin.ai/blog/2023/11/image-122.png' />
         </div>
       </div>
       <HeaderContent />

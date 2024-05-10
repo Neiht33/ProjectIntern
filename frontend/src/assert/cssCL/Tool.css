@@ -386,11 +386,6 @@ th {
     text-align: inherit
 }
 
-label {
-    display: inline-block;
-    margin-bottom: .5rem
-}
-
 button {
     border-radius: 0
 }
@@ -547,8 +542,7 @@ h3 {
     font-size: 1.75rem
 }
 
-.h4,
-h4 {
+.h4 {
     font-size: 1.5rem
 }
 
@@ -1653,7 +1647,7 @@ select.form-control:focus::-ms-value {
 }
 
 .mb-2 {
-    margin-bottom: .5rem !important
+    margin-bottom: .5rem
 }
 
 .mb15 {
@@ -1819,7 +1813,7 @@ select.form-control:focus::-ms-value {
 }
 
 .text-lg {
-    font-size: 16px !important
+    font-size: 16px
 }
 
 .text-hint {
@@ -2536,10 +2530,6 @@ a {
 
 .ml-1 {
     margin-left: 5px !important
-}
-
-.ml-2 {
-    margin-left: 10px !important
 }
 
 .ml-3 {

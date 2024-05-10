@@ -572,11 +572,11 @@ const Quiz = () => {
                                              {question.options.map((option, optionIndex) => (
                                                   <div key={optionIndex}
                                                        className="flex items-center hover:border-green-500 rounded-lg transition duration-300 p-2"
-                                                       style={{ borderRadius: '60px', fontWeight: '500', border: '1px solid', width: '50%' }}
+                                                       style={{ borderRadius: '24px', fontWeight: '500', border: '1px solid' }}
                                                   >
                                                        <Radio
                                                             color="black"
-                                                            style={{ height: '25px', width: '25px', borderRadius: '50%' }}
+                                                            style={{ height: '25px', width: '25px', borderRadius: '50%', margin: '0' }}
                                                             id={`option-${index}-${optionIndex}`}
                                                             name={`question-${index}`}
                                                             value={option.personality}
@@ -586,6 +586,7 @@ const Quiz = () => {
                                                                       className="h-3 w-3"
                                                                       viewBox="0 0 20 20"
                                                                       fill="currentColor"
+                                                                      style={{ margin: 0 }}
                                                                  >
                                                                       <path
                                                                            fillRule="evenodd"
@@ -597,7 +598,7 @@ const Quiz = () => {
                                                             checked={userAnswers[index] === option.personality}
                                                             onChange={() => handleAnswerClick(index, option.personality)}
                                                        />
-                                                       <label style={{ fontWeight: '700', color: 'black' }} htmlFor={`option-${index}-${optionIndex}`} className="ml-2">{option.text}</label>
+                                                       <label style={{ fontWeight: '700', color: 'black', margin: '0' }} htmlFor={`option-${index}-${optionIndex}`} className="ml-2">{option.text}</label>
                                                   </div>
                                              ))}
                                         </div>
@@ -614,7 +615,7 @@ const Quiz = () => {
                                         alert('Vui lòng hoàn thành tất cả câu hỏi trước khi xem kết quả.');
                                    }
                               }} className="hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-                                   style={{ background: 'linear-gradient(273deg,#c0ce20 13.76%,#26cd70 60.24%,#0cd064 96.97%)', borderRadius: '50px', fontSize: '24px', width: '300px', height: '64px' }}
+                                   style={{ background: 'linear-gradient(273deg, rgb(68 32 206) 13.76%, rgb(38 180 205) 60.24%, rgb(207 12 208) 96.97%)', borderRadius: '50px', fontSize: '24px', width: '300px', height: '64px', border: '2px solid white' }}
                               >
                                    Xem kết quả
                               </button>
@@ -639,7 +640,7 @@ const ProgressLabelOutside = ({ completed, answeredQuestionsCount, totalQuestion
      const progressColor = completed ? 'bg-green-500' : 'bg-black'; // Màu của phần đã hoàn thành hoặc chưa hoàn thành
 
      return (
-          <div className="w-full mb-8" style={{ background: 'rgb(40 205 144)', height: '80px', padding: '5px', position: 'fixed', zIndex: '72', left: '0', top: '0', right: '0' }}>
+          <div className="w-full mb-8" style={{ background: 'linear-gradient(283deg, black, #646fef)', height: '80px', padding: '5px', position: 'fixed', zIndex: '72', left: '0', top: '0', right: '0' }}>
                <div className="flex items-center justify-between gap-4">
                     <Typography color="white" variant="h6">
                          Completed

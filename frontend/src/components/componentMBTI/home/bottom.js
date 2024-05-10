@@ -142,7 +142,7 @@ export default function Bottom() {
   const secondPageData = cardData.slice(8);
 
   return (
-    <div style={{ marginTop: "40px", padding: "58px 95px 20px", background: "linear-gradient(0deg, rgba(0, 0, 0, .05), rgba(0, 0, 0, .05)), linear-gradient(180deg, #01543a, #2a9d60 79.69%, #b4c168)" }}>
+    <div style={{ padding: "58px 95px 20px", background: "linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), linear-gradient(rgb(1 53 84), rgb(42 87 157) 79.69%, rgb(128 187 191))" }}>
       <div style={{ fontSize: "45px", fontWeight: "700", marginBottom: "30px", color: "blanchedalmond" }}>
         16 nhóm tính cách MBTI
       </div>

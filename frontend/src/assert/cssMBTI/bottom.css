@@ -26,9 +26,7 @@
      /* Ẩn mặt sau của thẻ */
 }
 
-.flip-card-front {
-     /* Thêm CSS cho mặt trước của thẻ */
-}
+
 
 .flip-card-back {
      display: flex;
@@ -38,4 +36,19 @@
      flex-direction: column;
      text-align: center;
      transform: rotateY(180deg);
+}
+
+.menu-list {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+     /* Hiển thị tối đa 3 mục trên mỗi hàng */
+     gap: 5px;
+     /* Khoảng cách giữa các mục */
+     max-width: 555px;
+     max-height: 355px;
+     /* Đặt maxWidth cho danh sách */
+}
+
+.card-style:hover {
+     background-color: white;
 }

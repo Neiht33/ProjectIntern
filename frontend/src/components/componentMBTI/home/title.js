@@ -3,11 +3,12 @@ import { Card } from '@material-tailwind/react';
 
 export default function HeaderContent() {
   return (
-    <div>
-      <div className='title-content' style={{ marginTop: '40px', padding: '58px 95px 20px' }}>
+    <div style={{ background: '#ededed' }}>
+      <div className='title-content' style={{ padding: '58px 95px 20px', height: '880px' }}>
         <h1>Trắc nghiệm tính cách MBTI là gì?</h1>
+        <img style={{ margin: 'auto', width: '800px', height: 'auto' }} src='https://thechargerfrontline.com/wp-content/uploads/2022/11/Personality-Test-900x568.png' alt="MBTI" />
         <div className='flex' style={{ height: '304px', width: 'auto', margin: '25px', gap: '50px' }}>
-          <img src='https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/mbti/what-is-mbti/mbti-topcv.png' alt="MBTI" />
+
           <div className='flex baxa' style={{ flexDirection: 'column' }}>
             <p style={{ marginBottom: '15px' }}>
               <span style={{ fontWeight: '700' }}>Trắc nghiệm tính cách MBTI</span> <span style={{ fontStyle: 'italic', fontWeight: '500' }}>(Myers-Briggs Type Indicator)</span> là một phương pháp sử dụng hàng loạt các câu hỏi trắc nghiệm để phân tích tính cách con người. Kết quả trắc nghiệm MBTI chỉ ra cách con người nhận thức thế giới xung quanh và ra quyết định cho mọi vấn đề trong cuộc sống.
@@ -64,7 +65,7 @@ export default function HeaderContent() {
           </Card>
         </div>
       </div>
-      <div style={{ padding: '58px 95px 0px', height: '150px', fontSize: '18px', color: '#004720', fontStyle: 'italic' }}>Bằng cách kết hợp từng khía cạnh của những cặp đối lập này, MBTI hình thành 16 nhóm tính cách và định nghĩa chúng dựa trên những nghiên cứu về tâm lý học của Katherine Cook Briggs và con gái bà, Isabel Briggs Myers.</div>
+      <div style={{ padding: '58px 95px 0px', height: '150px', fontSize: '18px', color: '#05105e', fontStyle: 'italic' }}>Bằng cách kết hợp từng khía cạnh của những cặp đối lập này, MBTI hình thành 16 nhóm tính cách và định nghĩa chúng dựa trên những nghiên cứu về tâm lý học của Katherine Cook Briggs và con gái bà, Isabel Briggs Myers.</div>
     </div>
   );
 }
