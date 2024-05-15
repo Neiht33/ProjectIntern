@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Radio, Progress, Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 const Quiz = () => {
      const questions = [
           {
@@ -509,6 +510,8 @@ const Quiz = () => {
           // Thêm các câu hỏi và lựa chọn khác tương tự ở đây
      ];
 
+     const [finalResult, setFinalResult] = useState('')
+     const [link, setLink] = useState('/mbti/mbti/')
      const [userAnswers, setUserAnswers] = useState(new Array(questions.length).fill(''));
      const [completed, setCompleted] = useState(false); // Trạng thái hoàn thành bài trắc nghiệm
 
@@ -525,7 +528,6 @@ const Quiz = () => {
 
 
      const getResult = () => {
-
           const personalityCounts = {
                E: 0,
                I: 0,
@@ -536,7 +538,6 @@ const Quiz = () => {
                J: 0,
                P: 0
           };
-
           userAnswers.forEach(personality => {
                personalityCounts[personality]++;
           });
@@ -549,8 +550,56 @@ const Quiz = () => {
           result += personalityCounts.T > personalityCounts.F ? 'T' : 'F';
           result += personalityCounts.J > personalityCounts.P ? 'J' : 'P';
 
+          if (result === 'ISTJ') {
+               return { result: 'ISTJ', id: 1 };
+          }
+          else if (result === 'ISFP') {
+               return { result: 'ISFP', id: 2 };
+          }
+          else if (result === 'INFP') {
+               return { result: 'INFP', id: 3 };
+          }
+          else if (result === 'INTJ') {
+               return { result: 'INTJ', id: 4 };
+          }
+          else if (result === 'ISFJ') {
+               return { result: 'ISFJ', id: 5 };
+          }
+          else if (result === 'ISTP') {
+               return { result: 'ISTP', id: 6 };
+          }
+          else if (result === 'INTJ') {
+               return { result: 'INTJ', id: 7 };
+          }
+          else if (result === 'INTP') {
+               return { result: 'INTP', id: 8 };
+          }
+          else if (result === 'ENFJ') {
+               return { result: 'ENFJ', id: 9 };
+          }
+          else if (result === 'ENTJ') {
+               return { result: 'ENTJ', id: 10 };
+          }
+          else if (result === 'ESFJ') {
+               return { result: 'ESFJ', id: 11 };
+          }
+          else if (result === 'ESTJ') {
+               return { result: 'ESTJ', id: 12 };
+          }
+          else if (result === 'ENFP') {
+               return { result: 'ENFP', id: 13 };
+          }
+          else if (result === 'ENTP') {
+               return { result: 'ENTP', id: 14 };
+          }
+          else if (result === 'ESFP') {
+               return { result: 'ESFP', id: 15 };
+          }
+          else if (result === 'ESTP') {
+               return { result: 'ESTP', id: 16 };
+          }
           // Chuyển hướng dựa trên kết quả tính cách
-          return result;
+          return { result };
      };
 
      const isAllQuestionsAnswered = () => {
@@ -614,6 +663,9 @@ const Quiz = () => {
                                    } else {
                                         alert('Vui lòng hoàn thành tất cả câu hỏi trước khi xem kết quả.');
                                    }
+                                   const { result, id } = getResult();
+                                   setFinalResult(result)
+                                   setLink(`/mbti/mbti/${id}`)
                               }} className="hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
                                    style={{ background: 'linear-gradient(273deg, rgb(68 32 206) 13.76%, rgb(38 180 205) 60.24%, rgb(207 12 208) 96.97%)', borderRadius: '50px', fontSize: '24px', width: '300px', height: '64px', border: '2px solid white' }}
                               >
@@ -622,12 +674,18 @@ const Quiz = () => {
                          </div>
                     ) : (
                          <div className="text-center">
-                              <h2 className="text-xl font-medium mb-4">Kết quả của bạn:</h2>
-                              <p className="text-lg font-semibold mb-4">{getResult()}</p>
-                              <button onClick={restartQuiz} className="bg-white border border-black hover:bg-black hover:text-white text-black font-semibold py-2 px-4 rounded"
-                                   style={{ width: '300px', height: '64px', fontSize: '24px', borderRadius: '30px', border: '1px solid #ccc' }}>
+                              <h2 style={{ fontSize: '40px', fontWeight: '700', color: 'white' }}>Kết quả của bạn:</h2>
+                              <p style={{ fontSize: '30px', padding: '10px', color: 'white' }}>{finalResult}</p>
+                              <button onClick={restartQuiz} className="bg-white border border-black hover:bg-black hover:text-white text-white font-semibold py-2 px-4 rounded"
+                                   style={{ background: 'linear-gradient(273deg, rgb(68 32 206) 13.76%, rgb(38 180 205) 60.24%, rgb(207 12 208) 96.97%)', borderRadius: '50px', fontSize: '21px', width: '300px', height: '64px', border: '2px solid white', color: 'white', margin: '15px' }}>
                                    Làm lại bài trắc nghiệm
                               </button>
+                              <Link to={link}>
+                                   <button className="bg-white border border-black hover:bg-black hover:text-white text-white font-semibold py-2 px-4 rounded"
+                                        style={{ background: 'linear-gradient(273deg, rgb(206 32 63) 13.76%, rgb(38 49 205) 60.24%, rgb(12 208 192) 96.97%)', borderRadius: '50px', fontSize: '24px', width: '300px', height: '64px', border: '2px solid white', color: 'white', margin: '15px' }}>
+                                        Xem chi tiết
+                                   </button>
+                              </Link>
                          </div>
                     )}
                </div>
@@ -637,7 +695,7 @@ const Quiz = () => {
 
 const ProgressLabelOutside = ({ completed, answeredQuestionsCount, totalQuestionsCount }) => {
      const percentage = ((answeredQuestionsCount / totalQuestionsCount) * 100).toFixed(1);
-     const progressColor = completed ? 'bg-green-500' : 'bg-black'; // Màu của phần đã hoàn thành hoặc chưa hoàn thành
+     const progressColor = completed ? 'bg-white' : 'bg-black'; // Màu của phần đã hoàn thành hoặc chưa hoàn thành
 
      return (
           <div className="w-full mb-8" style={{ background: 'linear-gradient(283deg, black, #646fef)', height: '80px', padding: '5px', position: 'fixed', zIndex: '72', left: '0', top: '0', right: '0' }}>

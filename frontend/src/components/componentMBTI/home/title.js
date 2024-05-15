@@ -3,7 +3,7 @@ import { Card } from '@material-tailwind/react';
 
 export default function HeaderContent() {
   return (
-    <div style={{ background: '#ededed' }}>
+    <div style={{ background: 'rgb(236 237 237)' }}>
       <div className='title-content' style={{ padding: '58px 95px 20px', height: '880px' }}>
         <h1>Trắc nghiệm tính cách MBTI là gì?</h1>
         <img style={{ margin: 'auto', width: '800px', height: 'auto' }} src='https://thechargerfrontline.com/wp-content/uploads/2022/11/Personality-Test-900x568.png' alt="MBTI" />
