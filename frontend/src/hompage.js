@@ -4,7 +4,6 @@ import { Dialog, Card, CardHeader, CardBody, CardFooter, Input, Checkbox, } from
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Routes, Route, Link } from 'react-router-dom';
 import HeaderContest from "./components/componentMBTI/contest/headerContest";
-import MBTI from "./components/componentMBTI/mbti/mbtigroup";
 import StoreCoverLetter from "./components/componentCL/StoreCoverLetter";
 import Preview from "./components/componentCL/Preview";
 import EditCoverLetter from "./components/componentCL/EditCoverLetter";
@@ -98,10 +97,6 @@ function PopoverWithDescriptionMBTI() {
             className="font-bold transition-colors hover:text-gray-900"
             style={{ fontWeight: '400', paddingBottom: '5px' }}
           >
-            <Link to={'/mbti/mbti'} >
-              <i class="fa-solid fa-pager" style={{ marginRight: '10px' }}></i>
-              16 Personalities MBTI
-            </Link>
           </Typography>
         </div>
       </PopoverContent>
@@ -372,7 +367,6 @@ export default function NavbarSimple() {
         <Route path="/Cover-Letter-list/Edit/:id" element={<EditCoverLetter />} />
         <Route path="/mbti/*" element={<Header />} />
         <Route path='/mbti/contest' element={<HeaderContest />} />
-        <Route path='/mbti/MBTI' element={<MBTI />} />
         <Route path='/mbti/MBTI/:id' element={<MBTIDetail />} />
         <Route path='/tools' element={<Home />} />
         <Route path='/tools/tietkiem' element={<Lapkehoachtietkiem />} />
