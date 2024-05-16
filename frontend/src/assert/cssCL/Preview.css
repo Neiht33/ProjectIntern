@@ -3711,7 +3711,7 @@ select.form-control:focus::-ms-value {
 }
 
 .text-xs {
-    font-size: 11px !important
+    font-size: 11px
 }
 
 .text-sm {
