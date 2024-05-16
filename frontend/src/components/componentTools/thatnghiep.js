@@ -21,14 +21,31 @@ export default function Thatnghiep() {
     console.log(formattedAmount);
 
     const [inherit, setInherit] = useState("");
-
+    const formatCurrency = (value) => {
+        let fein = value.replace(/[^0-9]/g, '');
+        let formattedValue = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(fein);
+        return formattedValue.replace('₫', '').trim();
+    };
     const handleChange = (event) => {
         const { name, value } = event.target;
+        if (name === 'p' || name === 'p1'|| name === 'p2'|| name === 'p3'|| name === 'p4'|| name === 'p5'|| name === 'p6') {
+            const formattedValue = formatCurrency(value);
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                [name]: formattedValue
+            }));
+        } else {
         setFormData((prevFormData) => ({
             ...prevFormData,
             [name]: value
         }));
     };
+}
+
+
     const handleChange2 = (event) => {
         formData.giatri = event.target.value
     }
@@ -47,7 +64,7 @@ export default function Thatnghiep() {
         let MonthlySalary = 20 * BaseSalary; //03
         let apply = MonthlySalary;
         let monthlyUnemployment = 5 * BaseSalary; //05
-        let MonthlyAllowance = 0.6 * principal; // 08
+        let MonthlyAllowance = 0.6 * Number(principal); // 08
         if (apply > MonthlySalary) {
             return MonthlySalary;
         } else if (MonthlyAllowance > monthlyUnemployment) {
@@ -210,48 +227,55 @@ export default function Thatnghiep() {
         let callradiosalary2 = document.querySelector(".private")
         let callradio2 = document.querySelector(".chedo")
         let callradio3 = document.querySelector(".chedothay")
+        const chuoi_moi = Number(formData.p.replace(/\./g, ''))
+        const chuoi_moi1 = Number(formData.p1.replace(/\./g, ''))
+        const chuoi_moi2 = Number(formData.p2.replace(/\./g, ''))
+        const chuoi_moi3 = Number(formData.p3.replace(/\./g, ''))
+        const chuoi_moi4 = Number(formData.p4.replace(/\./g, ''))
+        const chuoi_moi5 = Number(formData.p5.replace(/\./g, ''))
+        const chuoi_moi6 = Number(formData.p6.replace(/\./g, ''))
         if (callradio2.checked) {
-            let calculatedTotal = calculateTotalAmount(formData.p);
+            let calculatedTotal = calculateTotalAmount(chuoi_moi);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
+            setTotal(Number(calculatedTotal));
         } else if (callradio3.checked) {
-            let calculatedTotal = calculateTotalAmountArea5(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            let calculatedTotal = calculateTotalAmountArea5(chuoi_moi1, chuoi_moi2, chuoi_moi3, chuoi_moi4, chuoi_moi5, chuoi_moi6);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal)
+            setTotal(Number(calculatedTotal))
         }
         if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung1") {
-            let calculatedTotal = calculateTotalAmountArea1(formData.p);
+            let calculatedTotal = calculateTotalAmountArea1(chuoi_moi);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
+            setTotal(Number(calculatedTotal));
         } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung2") {
-            let calculatedTotal = calculateTotalAmountArea2(formData.p);
+            let calculatedTotal = calculateTotalAmountArea2(chuoi_moi);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
+            setTotal(Number(calculatedTotal));
         } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung3") {
-            let calculatedTotal = calculateTotalAmountArea3(formData.p);
+            let calculatedTotal = calculateTotalAmountArea3(chuoi_moi);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
+            setTotal(Number(calculatedTotal));
         } else if (callradio.checked && callradiosalary1.checked && formData.giatri === "vung4") {
-            let calculatedTotal = calculateTotalAmountArea4(formData.p);
+            let calculatedTotal = calculateTotalAmountArea4(chuoi_moi);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
+            setTotal(Number(calculatedTotal));
         }
         if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung1") {
-            let calculatedTotal = calculateTotalAmountArea6(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            let calculatedTotal = calculateTotalAmountArea6(chuoi_moi1, chuoi_moi2, chuoi_moi3, chuoi_moi4, chuoi_moi5, chuoi_moi6);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
+            setTotal(Number(calculatedTotal));
         } else if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung2") {
-            let calculatedTotal = calculateTotalAmountArea7(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            let calculatedTotal = calculateTotalAmountArea7(chuoi_moi1, chuoi_moi2, chuoi_moi3, chuoi_moi4, chuoi_moi5, chuoi_moi6);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
+            setTotal(Number(calculatedTotal));
         } else if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung3") {
-            let calculatedTotal = calculateTotalAmountArea8(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            let calculatedTotal = calculateTotalAmountArea8(chuoi_moi1, chuoi_moi2, chuoi_moi3, chuoi_moi4, chuoi_moi5, chuoi_moi6);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
+            setTotal(Number(calculatedTotal));
         } else if (callradio1.checked && callradiosalary2.checked && formData.giatri === "vung4") {
-            let calculatedTotal = calculateTotalAmountArea9(formData.p1, formData.p2, formData.p3, formData.p4, formData.p5, formData.p6);
+            let calculatedTotal = calculateTotalAmountArea9(chuoi_moi1, chuoi_moi2, chuoi_moi3, chuoi_moi4, chuoi_moi5, chuoi_moi6);
             console.log("Tổng số tiền sau kỳ hạn năm là:", calculatedTotal)
-            setTotal(calculatedTotal);
+            setTotal(Number(calculatedTotal));
         }
         if (formData.n < 12) {
             setInherit("không đươc hưởng BHTN")
@@ -438,7 +462,7 @@ export default function Thatnghiep() {
                 {
                     <div className='Giatrihienthi'>
                         <p>Kết Quả</p>
-                        <p> Mức hưởng BHTN hàng tháng: {total} (Tháng)</p>
+                        <p> Mức hưởng BHTN hàng tháng: {formattedAmount} (Tháng)</p>
                         <p> {inherit}  </p>
                     </div>}
             </form >

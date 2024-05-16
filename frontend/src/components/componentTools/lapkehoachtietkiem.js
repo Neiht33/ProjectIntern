@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import '../styles/lapkehoachtietkiem.scss'
+import "../../assert/cssTools/AppTool.css"
 export default function Lapkehoachtietkiem() {
     const [formData, setFormData] = useState({
         p: '',
@@ -20,29 +20,51 @@ export default function Lapkehoachtietkiem() {
     n là số năm bạn dự tính đầu tư.
     M Số tiền ban đầu (VNĐ) 
      */
+    const formatCurrency = (value) => {
+        let fein = value.replace(/[^0-9]/g, '');
+        let formattedValue = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(fein);
+        return formattedValue.replace('₫', '').trim();
+    };
     const handleChange = (event) => {
         const { name, value } = event.target;
+        if (name === 'p' || name === 'M') {
+            const formattedValue = formatCurrency(value);
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                [name]: formattedValue
+            }));
+        } else {
         setFormData((prevFormData) => ({
             ...prevFormData,
             [name]: value
         }));
     };
+}
 
+    
     const getFormData = (event) => {
         event.preventDefault();
-        console.log(formData);
+        // console.log(formData);
         // let PMT = calculatePMT(FV, PV, interestRate, n);
         // console.log("Số tiền cần tiết kiệm mỗi tháng:", PMT);
+        const chuoi_moi = Number(formData.p.replace(/\./g, ''))
+        const chuoi_moi2 = Number(formData.M.replace(/\./g, ''))
+        const chuoi_moi3 = Number(formData.i.replace(/\./g, '.'))
         if (formData.giatri === 'nam') {
-            let totalAmountyear = calculateTotalAmountyear(formData.p, formData.M, formData.n, formData.i, formData.giatri);
+            let totalAmountyear = calculateTotalAmountyear(chuoi_moi, chuoi_moi2, formData.n, chuoi_moi3, formData.giatri);
+            console.log(typeof formData.p  );
             console.log("Tổng số tiền sau kỳ hạn năm là:", totalAmountyear)
+
             setTotal(totalAmountyear)
         } else if (formData.giatri === 'thang') {
-            let totalAmount = calculateTotalAmount(formData.p, formData.M, formData.n, formData.i, formData.giatri);
+            let totalAmount = calculateTotalAmount(chuoi_moi, chuoi_moi2, formData.n, chuoi_moi3, formData.giatri);
             console.log("Tổng số tiền sau kỳ hạn tháng là:", totalAmount)
             setTotal(totalAmount)
         } else if (formData.giatri === 'ngay') {
-            let totalAmountdate = calculateTotalAmountDaily(formData.p, formData.M, formData.n, formData.i, formData.giatri);
+            let totalAmountdate = calculateTotalAmountDaily(chuoi_moi,chuoi_moi2, formData.n, chuoi_moi3, formData.giatri);
             console.log("Tổng số tiền sau kỳ hạn ngày là:", totalAmountdate)
             setTotal(totalAmountdate)
         }
@@ -87,7 +109,7 @@ export default function Lapkehoachtietkiem() {
 
     function calculateTotalAmountDaily(principal, Initialinvestment, years, interestRate) {
         // Chuyển đổi lãi suất thành dạng thập phân
-        let monthlyInterestRate = interestRate / 365;
+        let monthlyInterestRate = interestRate / 100 / 365 ;
 
         // // Số lần lãi được tính trong khoảng thời gian gửi
         let numberOfPayments = years * 12;
@@ -99,13 +121,11 @@ export default function Lapkehoachtietkiem() {
 
         let totalAmount = element / samplepart;
 
+        // let totalAmountDaily = totalAmount / 12
+
         return totalAmount.toFixed(0); // Làm tròn đến hai chữ số thập phân
     }
-    // function test1() {
-    //     let test = 1000000 / 8 / 100;
-    //     return test;
-    // }
-    // console.log(" tổng tiền là : ", test);
+
 
 
 
@@ -131,7 +151,7 @@ export default function Lapkehoachtietkiem() {
                     </div>
                     <div className='principal-right'>
                         <label>
-                            <input value={formData.p} onChange={handleChange} placeholder="VD : 10,000,000"
+                            <input value={formData.p} onChange={handleChange}  placeholder="VD : 10,000,000"
                                 name="p" />
                         </label>
                     </div>
@@ -216,7 +236,6 @@ export default function Lapkehoachtietkiem() {
                             <option>--Chọn--</option>
                             <option value="thang">Hàng tháng</option>
                             <option value="nam">Hàng năm</option>
-                            <option value="ngay">Hàng ngày</option>
                         </select>
                     </div>
                 </div>
