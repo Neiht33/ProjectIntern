@@ -55,8 +55,6 @@ function Them6 ({getData, data, setImgData, urlIMG, setUrlIMG}) {
     };
   
     const handleExitEditIMG = () => {
-      document.getElementById('image-upload-change-two').value = null;
-      document.getElementById('image-upload-change').value = null;
       const close = document.getElementById('imageEditorWraper')
       close.style.display = 'none'
     }
