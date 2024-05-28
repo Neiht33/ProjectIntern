@@ -149,7 +149,7 @@ export default function Example() {
 
 
   return (
-    <Slider {...settings}>
+    <Slider {...settings} style={{margin: '30px', paddingLeft: '10px'}}>
       {cardData.map((card, index) => (
         <div key={index}>
           <Link to={card.link}>

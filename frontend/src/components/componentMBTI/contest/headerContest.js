@@ -15,8 +15,8 @@ const cardData = [
   },
   {
     image: 'https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/mbti-test/find-job.png',
-    title: 'Khám phá cơ hội nghề nghiệp',
-    content: 'Khám phá 40.000+ cơ hội việc làm mới nhất phù hợp với nhóm tính cách của bạn trên Topcv.vn'
+    title: 'Nguồn gốc của bài trắc nghiệm',
+    content: 'Trắc nghiệm MBTI được phát triển bởi Katherine Brook Briggs và con gái bà là Isabel Briggs Myers'
   }
 ];
 
