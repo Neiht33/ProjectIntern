@@ -16,7 +16,7 @@ export default function Header() {
           <div className='header-home  home-mid' style={{ display: 'flex', flexDirection: 'column' }}>
             <h1>TRẮC NGHIỆM TÍNH CÁCH MBTI</h1>
             <h2 style={{ textAlign: 'center', fontSize: '32px' }}>Khám phá tiềm năng bản thân</h2>
-            <Button type="primary" shape="round" style={{ height: '60px', width: '250px', margin: 'auto', fontFamily: 'cursive', fontSize: '30px', background: 'radial-gradient(#3d4562, #5c81f1)' }}>
+            <Button type="primary" shape="round" style={{ height: '60px', width: '250px', margin: 'auto', fontSize: '30px', background: 'radial-gradient(#3d4562, #5c81f1)' }}>
               <Link className='hihi' to='/mbti/contest'>Làm bài test</Link>
             </Button>
           </div>

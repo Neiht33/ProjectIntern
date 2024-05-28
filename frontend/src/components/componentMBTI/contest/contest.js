@@ -701,7 +701,7 @@ const ProgressLabelOutside = ({ completed, answeredQuestionsCount, totalQuestion
           <div className="w-full mb-8" style={{ background: 'linear-gradient(283deg, black, #646fef)', height: '80px', padding: '5px', position: 'fixed', zIndex: '72', left: '0', top: '0', right: '0' }}>
                <div className="flex items-center justify-between gap-4">
                     <Typography color="white" variant="h6">
-                         Completed
+                         {answeredQuestionsCount} / {totalQuestionsCount}
                     </Typography>
                     <Typography color="white" variant="h6">
                          {completed ? '100%' : `${percentage}%`}
