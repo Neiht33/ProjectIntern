@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { Card, Radio, Progress, Typography } from "@material-tailwind/react";
+import {
+     Drawer,
+     Button,
+     IconButton,
+} from "@material-tailwind/react";
+import '../../../assert/cssMBTI/contest.css'
 import { Link } from "react-router-dom";
+
+
 const Quiz = () => {
      const questions = [
           {
@@ -509,7 +517,6 @@ const Quiz = () => {
           },
           // Thêm các câu hỏi và lựa chọn khác tương tự ở đây
      ];
-
      const [finalResult, setFinalResult] = useState('')
      const [link, setLink] = useState('/mbti/mbti/')
      const [userAnswers, setUserAnswers] = useState(new Array(questions.length).fill(''));
@@ -611,9 +618,9 @@ const Quiz = () => {
      return (
           <div className="min-h-screen py-8">
                <div className="max-w-4xl mx-auto">
-                    <ProgressLabelOutside completed={completed} answeredQuestionsCount={answeredQuestionsCount} totalQuestionsCount={questions.length} />
+                    <ProgressLabelOutside completed={completed} answeredQuestionsCount={answeredQuestionsCount} totalQuestionsCount={questions.length} userAnswers={userAnswers}/>
                     {questions.map((question, index) => (
-                         <Card key={index} className="mb-8" >
+                         <Card key={index} className="mb-8" id={index}>
                               <Card.Body>
                                    <div style={{ width: '100%' }}>
                                         <h2 className="text-lg font-medium mb-4" style={{ color: 'rgb(48 48 48)', fontSize: '28px', fontWeight: '700' }}>{index + 1}. {question.question}</h2>
@@ -693,23 +700,45 @@ const Quiz = () => {
      );
 };
 
-const ProgressLabelOutside = ({ completed, answeredQuestionsCount, totalQuestionsCount }) => {
+const ProgressLabelOutside = ({ completed, answeredQuestionsCount, totalQuestionsCount ,userAnswers}) => {
      const percentage = ((answeredQuestionsCount / totalQuestionsCount) * 100).toFixed(1);
      const progressColor = completed ? 'bg-white' : 'bg-black'; // Màu của phần đã hoàn thành hoặc chưa hoàn thành
+     const [openRight, setOpenRight] = React.useState(false);
+     const openDrawerRight = () => setOpenRight(true);
+     const closeDrawerRight = () => setOpenRight(false);
 
      return (
           <div className="w-full mb-8" style={{ background: 'linear-gradient(283deg, black, #646fef)', height: '80px', padding: '5px', position: 'fixed', zIndex: '72', left: '0', top: '0', right: '0' }}>
                <div className="flex items-center justify-between gap-4">
-                    <Typography color="white" variant="h6">
+                    <Typography color="white" variant="h6" style={{paddingLeft: '15px'}}>
                          {answeredQuestionsCount} / {totalQuestionsCount}
                     </Typography>
                     <Typography color="white" variant="h6">
-                         {completed ? '100%' : `${percentage}%`}
+                         {/*{completed ? '100%' : `${percentage}%`}*/}
+                         <Button onClick={openDrawerRight} style={{border: 'none', background: 'none', fontSize: '15px', textTransform: 'none' }}>Xem chi tiết</Button>
                     </Typography>
                </div>
                <div className="relative bg-gray-200 h-4 rounded-full overflow-hidden" style={{ background: 'white', width: '90%', margin: 'auto' }}>
                     <div className={`absolute left-0 top-0 h-full ${progressColor}`} style={{ width: completed ? '100%' : `${percentage}%` }}></div>
                </div>
+               <Drawer
+                   placement="right"
+                   open={openRight}
+                   size={450}
+                   onClose={closeDrawerRight}
+                   className="p-4 drawer-container"
+               >
+                    <p style={{fontSize: '27px', fontWeight: '600', marginBottom: '20px'}}>Bạn đã trả lời <span style={{color: 'blue'}}>{answeredQuestionsCount}/{totalQuestionsCount}</span></p>
+                    <div className="question-container">
+                         {userAnswers.map((answer, index) => (
+                             <div className="question-item" key={index}>
+                                  <a href={`#${index - 1}`} className="flex">
+                                       Câu {index + 1} <input checked={answer} type={"checkbox"} className="custom-checkbox"/>
+                                  </a>
+                             </div>
+                         ))}
+                    </div>
+               </Drawer>
           </div>
      );
 
