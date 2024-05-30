@@ -136,7 +136,7 @@ function PopoverWithDescriptionTools() {
           >
             <Link to={'/tools'}>
               <i class="fa-solid fa-arrow-turn-up" style={{ marginRight: '10px' }}></i>
-              Tính lãi xuất kép
+              Tính lãi suất kép
             </Link>
           </Typography>
         </div>

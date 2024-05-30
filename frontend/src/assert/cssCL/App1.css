@@ -6693,9 +6693,8 @@ angle-up .fa-gamepad:before {
 #template-container .cv-img {
     border-radius: 1px;
     display: block;
-    height: 255px;
     position: relative;
-    width: 255px
+    width: 100%;
 }
 
 #template-container .cv-img>.img {
@@ -6708,8 +6707,7 @@ angle-up .fa-gamepad:before {
 #template-container .cv-img>.img img {
     cursor: pointer;
     display: block;
-    height: 255px;
-    width: 255px
+    width: 100%;
 }
 
 #template-container .cv-img:hover .cv-overlay {

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import jsPDF from 'jspdf';
+import { Tooltip } from "@material-tailwind/react";
 import axios from 'axios';
 import html2PDF from 'jspdf-html2canvas';
 import { format } from 'date-fns-tz';
@@ -11,6 +11,13 @@ function StoreCoverLetter () {
     const [data, setData] = useState([])
     const componentRef = useRef(null);
     const [imageSrc, setImageSrc] = useState('');
+    const [copy, setCopy] = useState('Copy')
+
+    const handleCopy = (url) => {
+        navigator.clipboard.writeText(url).then(() => {
+            setCopy('Copied')
+        })
+      };
 
     useEffect(() => {
         getData()
@@ -116,7 +123,14 @@ function StoreCoverLetter () {
                                             <label htmlFor="">
                                                 <input type="text" readOnly="readonly" value={`http://localhost:3000/Cover-Letter-list/Preview/${item.id}`}/>
                                             </label>
-                                            <a className="copy js-copy-cv" data-toggle="tooltip" title="Copy" data-url={`http://localhost:3000/Cover-Letter-list/Preview/${item.id}`}><i className="fa fa-clone" aria-hidden="true"></i></a>
+                                            <Tooltip content={copy} placement="top">
+                                                <a className="copy js-copy-cv" data-toggle="tooltip" title="Copy" data-url={`http://localhost:3000/Cover-Letter-list/Preview/${item.id}`} onClick={() => {
+                                                    handleCopy(`http://localhost:3000/Cover-Letter-list/Preview/${item.id}`)
+                                                    setTimeout(() => {
+                                                        setCopy('Copy')
+                                                    },1500)
+                                                }}><i className="fa fa-clone" aria-hidden="true"></i></a>
+                                            </Tooltip>
                                         </div>
                                         <ul className="cv-action text-dark-gray">
                                             <li>
